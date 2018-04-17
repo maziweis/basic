@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTopLeft.cshtml";
+}
+
+@model Fz.Core.VModel.SyUserStudent.FormImport
+
+<div class="panel panel-default">
+    <div class="panel-body clearfix">
+        <div class="moduleTitle">
+            <h3>学生信息导入</h3>
+        </div>
+        @using (Html.BeginForm("Import", "SyUserStudent", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+        {
+            <div class="form-group col-md-12" style="font-size:12px;">注：选择要导入的EXCEL：（工作表名为“Sheet1”）</div>
+            <div class="form-group col-md-12">
+                @Html.TextBoxFor(m => m.File, new { type = "file" })
+                @Html.ValidationMessageFor(m => m.File)
+            </div>
+            <div class="form-group col-md-12">
+                <a href="~/Content/Templates/学生账户导入模板.xlsx" class="btn btn-default">下载模板</a>
+                <button type="submit" class="btn btn-primary">导入</button>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model List<Fz.Core.VModel.SyLogRoomOper.Grid>
+<table class="table table-bordered table-hover" style="table-layout:fixed">
+    <thead>
+        <tr>
+            <th style="width:60px">序号</th>
+            <th>用户名</th>
+            <th>姓名</th>
+            <th>角色</th>
+            <th>操作</th>
+            <th>时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count > 0)
+        {
+            int i = 0;
+            foreach (var item in Model)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>@item.Account</td>
+                    <td>@item.UserName</td>
+                    <td>
+                        @if (item.RoleNames != null)
+                        {
+                            foreach (string name in item.RoleNames)
+                            {
+                                <span class="label label-info">@name</span>
+                            }
+                        }
+                    </td>
+                    <td>@Fz.Common.Dict.RoomOperType.GetVal(item.OperId)</td>
+                    <td>@item.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr><td class="nodata" colspan="6">@Fz.Common.Const.Grid_NoData</td></tr>
+        }
+    </tbody>
+</table>

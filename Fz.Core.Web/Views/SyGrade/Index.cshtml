@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTopLeft.cshtml";
+}
+
+@model Fz.Core.VModel.SyGrade.Index
+
+<div class="box">
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-default" href="@Url.Action("Add")" role="button" data-toggle="modal" data-target="#myModal" data-backdrop="static">新增</a>
+            <a class="btn btn-default" href="@Url.Action("Graduate")" role="button" data-toggle="modal" data-target="#myModal" data-backdrop="static">毕业</a>
+            <a class="btn btn-default" href="@Url.Action("Up")" role="button" data-toggle="modal" data-target="#myModal" data-backdrop="static">升级</a>
+        </div>
+    </div>
+    <div class="datas">
+        @Html.Partial("_IndexGrid", Model.Grid)
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("/Content/Js/SyGrade.js")"></script>
+}

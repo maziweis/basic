@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutTopLeft.cshtml";
+}
+@model Fz.Resource.VModel.ResourceApprove.Form
+<div class="rightCont">
+    @using (Html.BeginForm("Index", "ResourceApprove", FormMethod.Get, new { @class = "form-inline", id = "form1" }))
+    {
+        <div class="resourceTable" style="margin-top:0;">
+            @if (Model.GridList.Data.Count > 0)
+            {
+                @Html.HiddenFor(m => m.GridList.Pager.PageIndex);
+                @Html.HiddenFor(m => m.GridList.Pager.PageSize);
+                <div class="tableHead clearfix">
+                    <div class="col-sm-1"><a class="checkbox selectAll"><input type="checkbox" />全选</a></div>
+                    <div class="col-sm-5">
+                        <button class="actBtn" id="ChoosedAgree">批量通过</button>
+                        <button class="download actBtn" id="ChoosedDisAgree">批量驳回</button>
+                    </div>
+                    <div class="col-sm-6"></div>
+                </div>
+                @Html.Partial("_IndexGrid", Model.GridList.Data)
+                <div class="tableFoot">
+                    @Html.Pager(Model.GridList.Pager)
+                </div>
+            }
+            else
+            {
+                <div class="emptyTip">没有要审核的资源....</div>
+            }
+        </div>
+    }
+</div>
+@section Scripts{
+    <script src="@Url.Content("/Content/Js/ResourceApprove.js")"></script>
+}
+
+

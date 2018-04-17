@@ -1,0 +1,64 @@
+﻿@{
+    Layout = null;
+    ViewBag.IsEnableds = Fz.Common.Dict.IsEnabled.Get();
+    ViewBag.Grades = Fz.Core.Bll.SyGradeBll.GetSelect();
+    Dictionary<int, string> SubjectDict = Fz.Core.Bll.DictSubjectBll.GetSelect();
+}
+
+@model Fz.Core.VModel.SyClass.Form
+
+@using (Ajax.BeginForm("Add", "SyClass", new AjaxOptions { HttpMethod = "Post", OnSuccess = "formSuccess(data)" }, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">班级新增</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @autocomplete = "off" })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.GradeId, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.GradeId, new SelectList(ViewBag.Grades, "key", "value"), "--请选择--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.GradeId)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Sort, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Sort, new { @class = "form-control", @autocomplete = "off" })
+                @Html.ValidationMessageFor(m => m.Sort)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.IsEnabled, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">@Html.DropDownListFor(m => m.IsEnabled, new SelectList(ViewBag.IsEnableds, "key", "value"), new { @class = "form-control" })</div>
+        </div>
+        @if (SubjectDict != null)
+        {
+            int i = 0;
+            foreach (var key in SubjectDict.Keys)
+            {
+                string id1 = string.Format("TsGrid_{0}__SubjectId", i);
+                string name1 = string.Format("TsGrid[{0}].SubjectId", i);
+                <input id="@id1" name="@name1" type="hidden" value="@key">
+                string labelName = SubjectDict[key] + "老师";
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="T_Yuwen">@labelName</label>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.TsGrid[i].TeacherId, new SelectList(Fz.Core.Bll.SyTeacherBll.GetDict(key), "key", "value"), "--请选择--", new { @class = "form-control" })
+                    </div>
+                </div>
+                i++;
+            }
+        }
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">确定</button>
+    </div>
+}

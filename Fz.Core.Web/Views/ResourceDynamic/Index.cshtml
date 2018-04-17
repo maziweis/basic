@@ -1,0 +1,99 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTopLeft.cshtml";
+}
+@model  List<Fz.Resource.VModel.ResourceDynamic.From>
+<div class="rightCont">
+    <div class="resourceList resourceTable">
+        @if (Model.Count > 0)
+        {
+            foreach (var m in Model)
+            {
+                if (m.DynamicType == 1)
+                {
+                    <div class="dynamicList">
+                        <div class="moduleTitle">
+                            <h3>分享</h3>
+                        </div>
+                        @if (m.ResourceList != null && m.ResourceList.Count > 0)
+                        {
+                            <ul class="clearfix">
+                                @foreach (var res in m.ResourceList)
+                                {
+                                    string type = Fz.Common.Dict.FileType.GetVal(res.FileType.ToLower());
+                                    if (string.IsNullOrEmpty(type))
+                                    {
+                                        type = "default";
+                                    }
+                                    <li class="col-lg-4" id="@res.ResourceID"><a><i class="@type"></i>@res.ResourceName</a></li>
+                                }
+                            </ul>
+                        }
+
+                        else {
+                            <div class="noneRec">暂无动态...</div>
+                        }
+                    </div>
+                }
+                else if (m.DynamicType == 2)
+                {
+                    <div class="dynamicList">
+                        <div class="moduleTitle">
+                            <h3>收藏</h3>
+                        </div>
+                        @if (m.ResourceList != null && m.ResourceList.Count > 0)
+                        {
+                            <ul class="clearfix">
+                                @foreach (var res in m.ResourceList)
+                                {
+                                    string type = Fz.Common.Dict.FileType.GetVal(res.FileType.ToLower());
+                                    if (string.IsNullOrEmpty(type))
+                                    {
+                                        type = "default";
+                                    }
+                                    <li class="col-lg-4" id="@res.ResourceID"><a><i class="@type"></i>@res.ResourceName</a></li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <div class="noneRec">暂无动态...</div>
+                        }
+                    </div>
+                }
+                else if (m.DynamicType == 3)
+                {
+                    <div class="dynamicList">
+                        <div class="moduleTitle">
+                            <h3>下载</h3>
+                        </div>
+                        @if (m.ResourceList != null && m.ResourceList.Count > 0)
+                        {
+                            <ul class="clearfix">
+                                @foreach (var res in m.ResourceList)
+                                {
+                                    string type = Fz.Common.Dict.FileType.GetVal(res.FileType.ToLower());
+                                    if (string.IsNullOrEmpty(type))
+                                    {
+                                        type = "default";
+                                    }
+                                    <li class="col-md-4" id="@res.ResourceID"><a><i class="@type"></i>@res.ResourceName</a></li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <div class="noneRec">暂无动态...</div>
+                        }
+                    </div>
+                }
+            }
+        }
+        else
+        {
+            <div class="emptyTip">暂时还没有资源动态....</div>
+        }
+    </div>
+</div>
+@section Scripts{
+    <script src="@Url.Content("/Content/Js/ResourceDynamic.js")"></script>
+    }

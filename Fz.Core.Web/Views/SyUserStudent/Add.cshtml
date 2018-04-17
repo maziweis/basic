@@ -1,0 +1,114 @@
+﻿@{
+    Layout = null;
+    ViewBag.IsEnableds = Fz.Common.Dict.IsEnabled.Get();
+    ViewBag.Sexs = Fz.Common.Dict.Sex.Get();
+    ViewBag.Grades = Fz.Core.Bll.SyGradeBll.GetSelect();
+    if (Model == null || Model.Grade == null)
+    {
+        ViewBag.Classs = new Dictionary<int, string>();
+    }
+    else
+    {
+        ViewBag.Classs = Fz.Core.Bll.SyClassBll.GetSelect((int)Model.Grade);
+    }
+    ViewBag.Roles = Fz.Core.Bll.SyRoleBll.GetDictStudent();
+    Dictionary<int, string> Roles = ViewBag.Roles as Dictionary<int, string>;
+}
+
+@model Fz.Core.VModel.SyUserStudent.Form
+
+@using (Ajax.BeginForm("Add", "SyUserStudent", new AjaxOptions { HttpMethod = "Post", OnSuccess = "formSuccess(data)" }, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">学生用户新增</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Account, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Account, new { @class = "form-control", @autocomplete = "off" })
+                @Html.ValidationMessageFor(m => m.Account)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @autocomplete = "off" })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Sex, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Sex, new SelectList(ViewBag.Sexs, "key", "value"), "--请选择--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Sex)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Grade, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Grade, new SelectList(ViewBag.Grades, "key", "value"), "--请选择--", new { @class = "form-control", @onchange = "GradeChange(this)" })
+                @Html.ValidationMessageFor(m => m.Grade)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Class, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Class, new SelectList(ViewBag.Classs, "key", "value"), "--请选择--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Class)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ExpiresTime, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.ExpiresTime, new { @class = "form-control", @readonly = "true", @autocomplete = "off", @placeholder = "不填写代表“无限期”", @onclick = "WdatePicker()" })
+                @Html.ValidationMessageFor(m => m.ExpiresTime)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.IsEnabled, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.IsEnabled, new SelectList(ViewBag.IsEnableds, "key", "value"), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.RoleIds, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10 form-inline">
+                @if (Roles != null)
+                {
+                    foreach (var key in Roles.Keys)
+                    {
+                        if (Model != null && Model.RoleIds != null && Model.RoleIds.Contains(key))
+                        {
+                            if (key == 4)
+                            {
+                                <label class="checkbox">
+                                    <input name="RoleIds" type="checkbox" autocomplete="off" enable="false" value="@key" checked onclick="return false;"> @Roles[key]
+                                </label>
+                            }
+                            else
+                            {
+                                <label class="checkbox">
+                                    <input name="RoleIds" type="checkbox" autocomplete="off" value="@key" checked> @Roles[key]
+                                </label>
+                            }
+                        }
+                        else
+                        {
+                            <label class="checkbox">
+                                <input name="RoleIds" type="checkbox" autocomplete="off" value="@key"> @Roles[key]
+                            </label>
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">确定</button>
+    </div>
+}
+<script>
+    labelCheck();
+</script>

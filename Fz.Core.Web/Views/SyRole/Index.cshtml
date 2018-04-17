@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTopLeft.cshtml";
+    ViewBag.Type = Fz.Common.Dict.UserType.Get();
+}
+
+@model Fz.Core.VModel.SyRole.Index
+
+<div class="box">
+    @using (Html.BeginForm("Index", "SyRole", FormMethod.Get, new { @class = "form-inline", id = "form1" }))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                @Html.DropDownListFor(m => m.Type, new SelectList(ViewBag.Type, "key", "value"), "--全部类型--", new { @class = "form-control", @onchange = "search()" })
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @autocomplete = "off", @placeholder = "请输入角色名称" })
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" onclick="search()">搜索</button>
+                    </span>
+                </div>
+                <a class="btn btn-default" href="@Url.Action("Add")" role="button">新增</a>
+                <a id="btnExport" class="btn btn-default" href="#" role="button">导出用户</a>
+            </div>
+        </div>
+    }
+    <div class="datas">
+        @Html.Partial("_IndexGrid", Model.Grid)
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("/Content/Js/SyRole.js")"></script>
+}

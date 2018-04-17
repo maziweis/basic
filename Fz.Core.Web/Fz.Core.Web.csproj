@@ -1,0 +1,1652 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{50719246-3EE7-4420-A282-D78567DA6A27}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fz.Core.Web</RootNamespace>
+    <AssemblyName>Fz.Core.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NPOI, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.OOXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiControllers\BaseApiController.cs" />
+    <Compile Include="ApiControllers\CheckLoginController.cs" />
+    <Compile Include="ApiControllers\CheckStuInfoController.cs" />
+    <Compile Include="ApiControllers\ClrLogMonitorWeb_AddController.cs" />
+    <Compile Include="ApiControllers\DownloadController.cs" />
+    <Compile Include="ApiControllers\GetAccountController.cs" />
+    <Compile Include="ApiControllers\GetAllUnitInfoTechController.cs" />
+    <Compile Include="ApiControllers\GetAvatarByIdController.cs" />
+    <Compile Include="ApiControllers\GetCoverByIdController.cs" />
+    <Compile Include="ApiControllers\GetCurUnitIDController.cs" />
+    <Compile Include="ApiControllers\GetExerciseController.cs" />
+    <Compile Include="ApiControllers\GetExerciseStuController.cs" />
+    <Compile Include="ApiControllers\GetNoteOrVideoController.cs" />
+    <Compile Include="ApiControllers\GetNoteOrVideoStuController.cs" />
+    <Compile Include="ApiControllers\GetResourceTypeController.cs" />
+    <Compile Include="ApiControllers\GetStudentByClassIdController.cs" />
+    <Compile Include="ApiControllers\GetStudentsController.cs" />
+    <Compile Include="ApiControllers\GetTextbookByIdController.cs" />
+    <Compile Include="ApiControllers\GetTextbookCatalogDictController.cs" />
+    <Compile Include="ApiControllers\GetTextbookDictController.cs" />
+    <Compile Include="ApiControllers\GetUnitInfoController.cs" />
+    <Compile Include="ApiControllers\GetUnitInfoTechController.cs" />
+    <Compile Include="ApiControllers\GetUserInfoController.cs" />
+    <Compile Include="ApiControllers\GetUserResourceByKeyController.cs" />
+    <Compile Include="ApiControllers\ImportResourceController.cs" />
+    <Compile Include="ApiControllers\ResourceController.cs" />
+    <Compile Include="ApiControllers\ResourceDeleteController.cs" />
+    <Compile Include="ApiControllers\ResourcePreviewController.cs" />
+    <Compile Include="ApiControllers\TempController.cs" />
+    <Compile Include="ApiControllers\TextbookResourceController.cs" />
+    <Compile Include="ApiControllers\UploadAvatarController.cs" />
+    <Compile Include="ApiControllers\UploadController.cs" />
+    <Compile Include="ApiControllers\UploadSmartClassController.cs" />
+    <Compile Include="ApiControllers\ChangePasswdController.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\Filter\AuthAttribute.cs" />
+    <Compile Include="App_Start\Filter\ErrApiAttribute.cs" />
+    <Compile Include="App_Start\Filter\ErrAttribute.cs" />
+    <Compile Include="App_Start\Filter\MonitorApiAttribute.cs" />
+    <Compile Include="App_Start\Filter\MonitorAttribute.cs" />
+    <Compile Include="App_Start\HttpMethodOverrideHandler.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Content\Tools\ueditor\net\App_Code\Config.cs" />
+    <Compile Include="Content\Tools\ueditor\net\App_Code\ConfigHandler.cs" />
+    <Compile Include="Content\Tools\ueditor\net\App_Code\CrawlerHandler.cs" />
+    <Compile Include="Content\Tools\ueditor\net\App_Code\Handler.cs" />
+    <Compile Include="Content\Tools\ueditor\net\App_Code\ListFileHandler.cs" />
+    <Compile Include="Content\Tools\ueditor\net\App_Code\NotSupportedHandler.cs" />
+    <Compile Include="Content\Tools\ueditor\net\App_Code\PathFormater.cs" />
+    <Compile Include="Content\Tools\ueditor\net\App_Code\UploadHandler.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DictSubjectController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ResourceApproveController.cs" />
+    <Compile Include="Controllers\ResourceController.cs" />
+    <Compile Include="Controllers\ResourceDynamicController.cs" />
+    <Compile Include="Controllers\ResourceHomeController.cs" />
+    <Compile Include="Controllers\ResourcePreviewController.cs" />
+    <Compile Include="Controllers\ResourceSearchController.cs" />
+    <Compile Include="Controllers\ResourceUpLoadController.cs" />
+    <Compile Include="Controllers\SyActivController.cs" />
+    <Compile Include="Controllers\SyClassController.cs" />
+    <Compile Include="Controllers\SyGradeController.cs" />
+    <Compile Include="Controllers\SyInitController.cs" />
+    <Compile Include="Controllers\SyLogBugController.cs" />
+    <Compile Include="Controllers\SyLogOperController.cs" />
+    <Compile Include="Controllers\SyLogPerfController.cs" />
+    <Compile Include="Controllers\SyLogRoomOperController.cs" />
+    <Compile Include="Controllers\SyNavController.cs" />
+    <Compile Include="Controllers\SyNavSystemController.cs" />
+    <Compile Include="Controllers\SyPassportController.cs" />
+    <Compile Include="Controllers\SyRoleController.cs" />
+    <Compile Include="Controllers\SySchoolController.cs" />
+    <Compile Include="Controllers\SyUserManagerController.cs" />
+    <Compile Include="Controllers\SyUserStudentController.cs" />
+    <Compile Include="Controllers\SyUserTeacherController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\数据库初始化\fz_basic.sql" />
+    <Content Include="App_Data\数据库初始化\fz_bigdata.sql" />
+    <Content Include="Content\Js\common.js" />
+    <Content Include="Content\Js\DictSubject.js" />
+    <Content Include="Content\Js\Resource.js" />
+    <Content Include="Content\Js\ResourceAdd.js" />
+    <Content Include="Content\Js\ResourceApprove.js" />
+    <Content Include="Content\Js\ResourceDynamic.js" />
+    <Content Include="Content\Js\ResourceHome.js" />
+    <Content Include="Content\Js\ResourcePreview.js" />
+    <Content Include="Content\Js\ResourceUpload.js" />
+    <Content Include="Content\Js\SearchResource.js" />
+    <Content Include="Content\Js\SyClass.js" />
+    <Content Include="Content\Js\SyGrade.js" />
+    <Content Include="Content\Js\SyInit.js" />
+    <Content Include="Content\Js\SyLogBug.js" />
+    <Content Include="Content\Js\SyLogOper.js" />
+    <Content Include="Content\Js\SyLogRoomOper.js" />
+    <Content Include="Content\Js\SyLogPerf.js" />
+    <Content Include="Content\Js\SyNav.js" />
+    <Content Include="Content\Js\SyNavSystem.js" />
+    <Content Include="Content\Js\SyRole.js" />
+    <Content Include="Content\Js\SySchool.js" />
+    <Content Include="Content\Js\SyUserManager.js" />
+    <Content Include="Content\Js\SyUserStudent.js" />
+    <Content Include="Content\Js\SyUserTeacher.js" />
+    <Content Include="Content\Styles\default\css\common.css" />
+    <Content Include="Content\Styles\default\css\layout.css" />
+    <Content Include="Content\Styles\default\css\reset.css" />
+    <Content Include="Content\Styles\default\img\adminNav.png" />
+    <Content Include="Content\Styles\default\img\Android.png" />
+    <Content Include="Content\Styles\default\img\arrow1.png" />
+    <Content Include="Content\Styles\default\img\arrow2.png" />
+    <Content Include="Content\Styles\default\img\arrowImg.png" />
+    <Content Include="Content\Styles\default\img\arrowImg1.png" />
+    <Content Include="Content\Styles\default\img\check.png" />
+    <Content Include="Content\Styles\default\img\collect.png" />
+    <Content Include="Content\Styles\default\img\collect0.png" />
+    <Content Include="Content\Styles\default\img\dashed.png" />
+    <Content Include="Content\Styles\default\img\download.png" />
+    <Content Include="Content\Styles\default\img\edge.png" />
+    <Content Include="Content\Styles\default\img\fail.png" />
+    <Content Include="Content\Styles\default\img\filetype.png" />
+    <Content Include="Content\Styles\default\img\Google.png" />
+    <Content Include="Content\Styles\default\img\homeNav.png" />
+    <Content Include="Content\Styles\default\img\icon_bg.png" />
+    <Content Include="Content\Styles\default\img\icon_flag.png" />
+    <Content Include="Content\Styles\default\img\ico_1.png" />
+    <Content Include="Content\Styles\default\img\ico_2.png" />
+    <Content Include="Content\Styles\default\img\IE.png" />
+    <Content Include="Content\Styles\default\img\img1.gif" />
+    <Content Include="Content\Styles\default\img\ios.png" />
+    <Content Include="Content\Styles\default\img\kingsun.gif" />
+    <Content Include="Content\Styles\default\img\line_conn.png" />
+    <Content Include="Content\Styles\default\img\listNone.png" />
+    <Content Include="Content\Styles\default\img\logo.png" />
+    <Content Include="Content\Styles\default\img\logo_ico.png" />
+    <Content Include="Content\Styles\default\img\nonerec.png" />
+    <Content Include="Content\Styles\default\img\nopage.png" />
+    <Content Include="Content\Styles\default\img\notpreview.png" />
+    <Content Include="Content\Styles\default\img\page_icon1.png" />
+    <Content Include="Content\Styles\default\img\page_icon2.png" />
+    <Content Include="Content\Styles\default\img\page_icon3.png" />
+    <Content Include="Content\Styles\default\img\page_icon4.png" />
+    <Content Include="Content\Styles\default\img\pdf-icon.png" />
+    <Content Include="Content\Styles\default\img\position_icon.png" />
+    <Content Include="Content\Styles\default\img\QRCode.png" />
+    <Content Include="Content\Styles\default\img\quit.png" />
+    <Content Include="Content\Styles\default\img\recIcon.png" />
+    <Content Include="Content\Styles\default\img\resourceDefault.png" />
+    <Content Include="Content\Styles\default\img\resourceTip.png" />
+    <Content Include="Content\Styles\default\img\save.png" />
+    <Content Include="Content\Styles\default\img\searchBtn.png" />
+    <Content Include="Content\Styles\default\img\share.png" />
+    <Content Include="Content\Styles\default\img\sNav_icon.png" />
+    <Content Include="Content\Styles\default\img\sNav_icon_hover.png" />
+    <Content Include="Content\Styles\default\img\success.png" />
+    <Content Include="Content\Styles\default\img\uploadImg.png" />
+    <Content Include="Content\Styles\default\img\worm.png" />
+    <Content Include="Content\Styles\default\img\ZtreeSelf.png" />
+    <Content Include="Content\Styles\default\js\jquery-1.10.2.min.js" />
+    <Content Include="Content\Styles\default\js\jquery-1.4.4.min.js" />
+    <Content Include="Content\Styles\default\js\jquery.cookie.js" />
+    <Content Include="Content\Tools\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\Tools\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\Tools\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Tools\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Tools\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Tools\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Tools\bootstrap\js\npm.js" />
+    <Content Include="Content\Tools\ECharts\echarts.min.js" />
+    <Content Include="Content\Tools\jquery\html5shiv.min.js" />
+    <Content Include="Content\Templates\学生账户导入模板.xlsx" />
+    <None Include="Content\Tools\jquery\jquery-1.10.2.intellisense.js" />
+    <Content Include="Content\Tools\jquery\jquery-1.10.2.js" />
+    <Content Include="Content\Tools\jquery\jquery-1.10.2.min.js" />
+    <Content Include="Content\Tools\jquery\jquery.cookie.js" />
+    <Content Include="Content\Tools\jquery\jquery.json-2.4.js" />
+    <Content Include="Content\Tools\jquery\jquery.placeholder.min.js" />
+    <Content Include="Content\Tools\jquery\jquery.unobtrusive-ajax.js" />
+    <Content Include="Content\Tools\jquery\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Content\Tools\jquery\jquery.validate-vsdoc.js" />
+    <Content Include="Content\Tools\jquery\jquery.validate.js" />
+    <Content Include="Content\Tools\jquery\jquery.validate.min.js" />
+    <Content Include="Content\Tools\jquery\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\Tools\jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\Tools\jquery\respond.min.js" />
+    <Content Include="Content\Tools\kindeditor\asp.net\bin\LitJSON.dll" />
+    <Content Include="Content\Tools\kindeditor\asp.net\demo.aspx" />
+    <Content Include="Content\Tools\kindeditor\asp.net\README.txt" />
+    <Content Include="Content\Tools\kindeditor\kindeditor-min.js" />
+    <Content Include="Content\Tools\kindeditor\kindeditor.js" />
+    <Content Include="Content\Tools\kindeditor\lang\ar.js" />
+    <Content Include="Content\Tools\kindeditor\lang\en.js" />
+    <Content Include="Content\Tools\kindeditor\lang\zh_CN.js" />
+    <Content Include="Content\Tools\kindeditor\lang\zh_TW.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\anchor\anchor.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\baidumap\baidumap.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\baidumap\map.html" />
+    <Content Include="Content\Tools\kindeditor\plugins\clearhtml\clearhtml.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\code\code.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\code\prettify.css" />
+    <Content Include="Content\Tools\kindeditor\plugins\code\prettify.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\emoticons.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\0.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\1.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\10.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\100.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\101.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\102.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\103.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\104.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\105.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\106.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\107.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\108.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\109.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\11.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\110.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\111.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\112.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\113.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\114.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\115.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\116.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\117.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\118.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\119.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\12.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\120.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\121.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\122.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\123.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\124.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\125.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\126.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\127.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\128.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\129.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\13.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\130.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\131.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\132.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\133.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\134.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\14.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\15.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\16.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\17.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\18.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\19.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\2.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\20.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\21.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\22.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\23.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\24.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\25.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\26.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\27.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\28.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\29.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\3.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\30.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\31.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\32.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\33.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\34.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\35.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\36.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\37.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\38.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\39.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\4.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\40.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\41.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\42.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\43.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\44.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\45.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\46.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\47.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\48.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\49.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\5.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\50.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\51.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\52.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\53.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\54.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\55.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\56.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\57.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\58.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\59.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\6.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\60.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\61.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\62.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\63.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\64.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\65.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\66.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\67.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\68.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\69.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\7.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\70.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\71.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\72.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\73.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\74.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\75.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\76.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\77.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\78.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\79.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\8.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\80.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\81.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\82.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\83.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\84.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\85.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\86.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\87.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\88.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\89.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\9.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\90.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\91.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\92.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\93.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\94.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\95.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\96.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\97.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\98.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\99.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\static.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\filemanager\filemanager.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\filemanager\images\file-16.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\filemanager\images\file-64.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\filemanager\images\folder-16.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\filemanager\images\folder-64.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\filemanager\images\go-up.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\flash\flash.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\image\image.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\image\images\align_left.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\image\images\align_right.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\image\images\align_top.gif" />
+    <Content Include="Content\Tools\kindeditor\plugins\image\images\refresh.png" />
+    <Content Include="Content\Tools\kindeditor\plugins\insertfile\insertfile.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\lineheight\lineheight.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\link\link.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\map\map.html" />
+    <Content Include="Content\Tools\kindeditor\plugins\map\map.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\media\media.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\multiimage\images\image.png" />
+    <Content Include="Content\Tools\kindeditor\plugins\multiimage\images\select-files-en.png" />
+    <Content Include="Content\Tools\kindeditor\plugins\multiimage\images\select-files-zh_CN.png" />
+    <Content Include="Content\Tools\kindeditor\plugins\multiimage\images\swfupload.swf" />
+    <Content Include="Content\Tools\kindeditor\plugins\multiimage\multiimage.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\pagebreak\pagebreak.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\plainpaste\plainpaste.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\preview\preview.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\quickformat\quickformat.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\table\table.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\template\html\1.html" />
+    <Content Include="Content\Tools\kindeditor\plugins\template\html\2.html" />
+    <Content Include="Content\Tools\kindeditor\plugins\template\html\3.html" />
+    <Content Include="Content\Tools\kindeditor\plugins\template\template.js" />
+    <Content Include="Content\Tools\kindeditor\plugins\wordpaste\wordpaste.js" />
+    <Content Include="Content\Tools\kindeditor\themes\common\anchor.gif" />
+    <Content Include="Content\Tools\kindeditor\themes\common\blank.gif" />
+    <Content Include="Content\Tools\kindeditor\themes\common\flash.gif" />
+    <Content Include="Content\Tools\kindeditor\themes\common\loading.gif" />
+    <Content Include="Content\Tools\kindeditor\themes\common\media.gif" />
+    <Content Include="Content\Tools\kindeditor\themes\common\rm.gif" />
+    <Content Include="Content\Tools\kindeditor\themes\default\background.png" />
+    <Content Include="Content\Tools\kindeditor\themes\default\default.css" />
+    <Content Include="Content\Tools\kindeditor\themes\default\default.png" />
+    <Content Include="Content\Tools\kindeditor\themes\qq\editor.gif" />
+    <Content Include="Content\Tools\kindeditor\themes\qq\qq.css" />
+    <Content Include="Content\Tools\kindeditor\themes\simple\simple.css" />
+    <Content Include="Content\Tools\My97DatePicker\calendar.js" />
+    <Content Include="Content\Tools\My97DatePicker\lang\en.js" />
+    <Content Include="Content\Tools\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="Content\Tools\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="Content\Tools\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="Content\Tools\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Content\Tools\My97DatePicker\skin\default\img.gif" />
+    <Content Include="Content\Tools\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Content\Tools\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\Tools\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\Tools\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Content\Tools\My97DatePicker\WdatePicker.js" />
+    <Content Include="Content\Tools\My97DatePicker\开发包\lang\en.js" />
+    <Content Include="Content\Tools\My97DatePicker\开发包\lang\zh-cn.js" />
+    <Content Include="Content\Tools\My97DatePicker\开发包\lang\zh-tw.js" />
+    <Content Include="Content\Tools\My97DatePicker\开发包\readme.txt" />
+    <Content Include="Content\Tools\My97DatePicker\开发包\skin\datePicker.gif" />
+    <Content Include="Content\Tools\My97DatePicker\开发包\skin\default\datepicker.css" />
+    <Content Include="Content\Tools\My97DatePicker\开发包\skin\default\img.gif" />
+    <Content Include="Content\Tools\My97DatePicker\开发包\skin\WdatePicker.css" />
+    <Content Include="Content\Tools\My97DatePicker\开发包\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\Tools\My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\Tools\My97DatePicker\开发包\skin\whyGreen\img.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\anchor\anchor.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\attachment.css" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\attachment.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\attachment.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\fileTypeImages\icon_chm.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\fileTypeImages\icon_default.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\fileTypeImages\icon_doc.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\fileTypeImages\icon_exe.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\fileTypeImages\icon_jpg.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\fileTypeImages\icon_mp3.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\fileTypeImages\icon_mv.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\fileTypeImages\icon_pdf.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\fileTypeImages\icon_ppt.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\fileTypeImages\icon_psd.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\fileTypeImages\icon_rar.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\fileTypeImages\icon_txt.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\fileTypeImages\icon_xls.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\images\alignicon.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\images\alignicon.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\images\bg.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\images\file-icons.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\images\file-icons.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\images\icons.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\images\icons.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\images\image.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\images\progress.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\images\success.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\attachment\images\success.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\background\background.css" />
+    <Content Include="Content\Tools\ueditor\dialogs\background\background.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\background\background.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\background\images\bg.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\background\images\success.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\charts\chart.config.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\charts\charts.css" />
+    <Content Include="Content\Tools\ueditor\dialogs\charts\charts.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\charts\charts.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\charts\images\charts0.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\charts\images\charts1.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\charts\images\charts2.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\charts\images\charts3.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\charts\images\charts4.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\charts\images\charts5.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\emotion\emotion.css" />
+    <Content Include="Content\Tools\ueditor\dialogs\emotion\emotion.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\emotion\emotion.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\emotion\images\0.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\emotion\images\bface.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\emotion\images\cface.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\emotion\images\fface.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\emotion\images\jxface2.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\emotion\images\neweditor-tab-bg.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\emotion\images\tface.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\emotion\images\wface.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\emotion\images\yface.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\gmap\gmap.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\help\help.css" />
+    <Content Include="Content\Tools\ueditor\dialogs\help\help.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\help\help.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\image\image.css" />
+    <Content Include="Content\Tools\ueditor\dialogs\image\image.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\image\image.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\image\images\alignicon.jpg" />
+    <Content Include="Content\Tools\ueditor\dialogs\image\images\bg.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\image\images\icons.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\image\images\icons.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\image\images\image.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\image\images\progress.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\image\images\success.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\image\images\success.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\insertframe\insertframe.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\internal.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\link\link.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\map\map.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\map\show.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\music\music.css" />
+    <Content Include="Content\Tools\ueditor\dialogs\music\music.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\music\music.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\preview\preview.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\images\addimg.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\images\brush.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\images\delimg.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\images\delimgH.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\images\empty.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\images\emptyH.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\images\eraser.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\images\redo.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\images\redoH.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\images\scale.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\images\scaleH.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\images\size.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\images\undo.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\images\undoH.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\scrawl.css" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\scrawl.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\scrawl\scrawl.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\searchreplace\searchreplace.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\searchreplace\searchreplace.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\snapscreen\snapscreen.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\spechars\spechars.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\spechars\spechars.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\table\dragicon.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\table\edittable.css" />
+    <Content Include="Content\Tools\ueditor\dialogs\table\edittable.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\table\edittable.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\table\edittd.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\table\edittip.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\template\config.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\template\images\bg.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\template\images\pre0.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\template\images\pre1.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\template\images\pre2.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\template\images\pre3.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\template\images\pre4.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\template\template.css" />
+    <Content Include="Content\Tools\ueditor\dialogs\template\template.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\template\template.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\images\bg.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\images\center_focus.jpg" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\images\file-icons.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\images\file-icons.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\images\icons.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\images\icons.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\images\image.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\images\left_focus.jpg" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\images\none_focus.jpg" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\images\progress.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\images\right_focus.jpg" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\images\success.gif" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\images\success.png" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\video.css" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\video.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\video\video.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\webapp\webapp.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\wordimage\fClipboard_ueditor.swf" />
+    <Content Include="Content\Tools\ueditor\dialogs\wordimage\imageUploader.swf" />
+    <Content Include="Content\Tools\ueditor\dialogs\wordimage\tangram.js" />
+    <Content Include="Content\Tools\ueditor\dialogs\wordimage\wordimage.html" />
+    <Content Include="Content\Tools\ueditor\dialogs\wordimage\wordimage.js" />
+    <Content Include="Content\Tools\ueditor\index.html" />
+    <Content Include="Content\Tools\ueditor\lang\en\en.js" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\addimage.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\alldeletebtnhoverskin.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\alldeletebtnupskin.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\background.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\button.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\copy.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\deletedisable.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\deleteenable.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\listbackground.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\localimage.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\music.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\rotateleftdisable.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\rotateleftenable.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\rotaterightdisable.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\rotaterightenable.png" />
+    <Content Include="Content\Tools\ueditor\lang\en\images\upload.png" />
+    <Content Include="Content\Tools\ueditor\lang\zh-cn\images\copy.png" />
+    <Content Include="Content\Tools\ueditor\lang\zh-cn\images\localimage.png" />
+    <Content Include="Content\Tools\ueditor\lang\zh-cn\images\music.png" />
+    <Content Include="Content\Tools\ueditor\lang\zh-cn\images\upload.png" />
+    <Content Include="Content\Tools\ueditor\lang\zh-cn\zh-cn.js" />
+    <Content Include="Content\Tools\ueditor\net\Bin\Newtonsoft.Json.dll" />
+    <Content Include="Content\Tools\ueditor\net\Bin\Newtonsoft.Json.pdb" />
+    <Content Include="Content\Tools\ueditor\net\Bin\Newtonsoft.Json.xml" />
+    <Content Include="Content\Tools\ueditor\net\net.sln" />
+    <Content Include="Content\Tools\ueditor\themes\default\css\ueditor.css" />
+    <Content Include="Content\Tools\ueditor\themes\default\css\ueditor.min.css" />
+    <Content Include="Content\Tools\ueditor\themes\default\dialogbase.css" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\anchor.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\arrow.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\arrow_down.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\arrow_up.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\button-bg.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\cancelbutton.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\charts.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\cursor_h.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\cursor_h.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\cursor_v.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\cursor_v.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\dialog-title-bg.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\filescan.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\highlighted.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\icons-all.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\icons.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\icons.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\loaderror.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\loading.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\lock.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\neweditor-tab-bg.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\pagebreak.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\scale.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\sortable.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\spacer.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\sparator_v.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\table-cell-align.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\tangram-colorpicker.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\toolbar_bg.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\unhighlighted.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\upload.png" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\videologo.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\word.gif" />
+    <Content Include="Content\Tools\ueditor\themes\default\images\wordpaste.png" />
+    <Content Include="Content\Tools\ueditor\themes\iframe.css" />
+    <Content Include="Content\Tools\ueditor\third-party\codemirror\codemirror.css" />
+    <Content Include="Content\Tools\ueditor\third-party\codemirror\codemirror.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\adapters\mootools-adapter.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\adapters\mootools-adapter.src.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\adapters\prototype-adapter.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\adapters\prototype-adapter.src.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\adapters\standalone-framework.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\highcharts-more.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\highcharts-more.src.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\highcharts.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\highcharts.src.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\annotations.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\annotations.src.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\canvas-tools.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\canvas-tools.src.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\data.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\data.src.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\drilldown.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\drilldown.src.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\exporting.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\exporting.src.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\funnel.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\funnel.src.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\heatmap.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\heatmap.src.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\map.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\map.src.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\no-data-to-display.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\themes\dark-blue.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\themes\dark-green.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\themes\gray.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\themes\grid.js" />
+    <Content Include="Content\Tools\ueditor\third-party\highcharts\themes\skies.js" />
+    <Content Include="Content\Tools\ueditor\third-party\jquery-1.10.2.js" />
+    <Content Include="Content\Tools\ueditor\third-party\jquery-1.10.2.min.js" />
+    <Content Include="Content\Tools\ueditor\third-party\snapscreen\UEditorSnapscreen.exe" />
+    <Content Include="Content\Tools\ueditor\third-party\SyntaxHighlighter\shCore.js" />
+    <Content Include="Content\Tools\ueditor\third-party\SyntaxHighlighter\shCoreDefault.css" />
+    <Content Include="Content\Tools\ueditor\third-party\video-js\video-js.css" />
+    <Content Include="Content\Tools\ueditor\third-party\video-js\video-js.min.css" />
+    <Content Include="Content\Tools\ueditor\third-party\video-js\video-js.swf" />
+    <Content Include="Content\Tools\ueditor\third-party\video-js\video.dev.js" />
+    <Content Include="Content\Tools\ueditor\third-party\video-js\video.js" />
+    <Content Include="Content\Tools\ueditor\third-party\webuploader\Uploader.swf" />
+    <Content Include="Content\Tools\ueditor\third-party\webuploader\webuploader.css" />
+    <Content Include="Content\Tools\ueditor\third-party\webuploader\webuploader.custom.js" />
+    <Content Include="Content\Tools\ueditor\third-party\webuploader\webuploader.custom.min.js" />
+    <Content Include="Content\Tools\ueditor\third-party\webuploader\webuploader.flashonly.js" />
+    <Content Include="Content\Tools\ueditor\third-party\webuploader\webuploader.flashonly.min.js" />
+    <Content Include="Content\Tools\ueditor\third-party\webuploader\webuploader.html5only.js" />
+    <Content Include="Content\Tools\ueditor\third-party\webuploader\webuploader.html5only.min.js" />
+    <Content Include="Content\Tools\ueditor\third-party\webuploader\webuploader.js" />
+    <Content Include="Content\Tools\ueditor\third-party\webuploader\webuploader.min.js" />
+    <Content Include="Content\Tools\ueditor\third-party\webuploader\webuploader.withoutimage.js" />
+    <Content Include="Content\Tools\ueditor\third-party\webuploader\webuploader.withoutimage.min.js" />
+    <Content Include="Content\Tools\ueditor\third-party\xss.min.js" />
+    <Content Include="Content\Tools\ueditor\third-party\zeroclipboard\ZeroClipboard.js" />
+    <Content Include="Content\Tools\ueditor\third-party\zeroclipboard\ZeroClipboard.min.js" />
+    <Content Include="Content\Tools\ueditor\third-party\zeroclipboard\ZeroClipboard.swf" />
+    <Content Include="Content\Tools\ueditor\ueditor.all.js" />
+    <Content Include="Content\Tools\ueditor\ueditor.all.min.js" />
+    <Content Include="Content\Tools\ueditor\ueditor.config.js" />
+    <Content Include="Content\Tools\ueditor\ueditor.parse.js" />
+    <Content Include="Content\Tools\ueditor\ueditor.parse.min.js" />
+    <Content Include="Content\Tools\uploadify\Change Log.txt" />
+    <Content Include="Content\Tools\uploadify\jquery.uploadify.js" />
+    <Content Include="Content\Tools\uploadify\jquery.uploadify.min.js" />
+    <Content Include="Content\Tools\uploadify\license.txt" />
+    <Content Include="Content\Tools\uploadify\swfobject.js" />
+    <Content Include="Content\Tools\uploadify\uploadify-cancel.png" />
+    <Content Include="Content\Tools\uploadify\uploadify.css" />
+    <Content Include="Content\Tools\uploadify\uploadify.swf" />
+    <Content Include="Content\Tools\uploadify\__MACOSX\._Change Log.txt" />
+    <Content Include="Content\Tools\uploadify\__MACOSX\._uploadify.swf" />
+    <Content Include="Content\Tools\Video5\ckplayer\ckplayer.js" />
+    <Content Include="Content\Tools\Video5\ckplayer\ckplayer.swf" />
+    <Content Include="Content\Tools\Video5\ckplayer\ckplayer.xml" />
+    <Content Include="Content\Tools\Video5\ckplayer\language.xml" />
+    <Content Include="Content\Tools\Video5\ckplayer\related.xml" />
+    <Content Include="Content\Tools\Video5\ckplayer\share.xml" />
+    <Content Include="Content\Tools\Video5\ckplayer\style.swf" />
+    <Content Include="Content\Tools\Video5\css\video-js.min.css" />
+    <Content Include="Content\Tools\Video5\index.html" />
+    <Content Include="Content\Tools\Video5\js\video-js.swf" />
+    <Content Include="Content\Tools\Video5\js\video.min.js" />
+    <Content Include="Content\Tools\Video5\js\videojs-ie8.min.js" />
+    <Content Include="Content\Tools\zTree\api\apiCss\api.js" />
+    <Content Include="Content\Tools\zTree\api\apiCss\common.css" />
+    <Content Include="Content\Tools\zTree\api\apiCss\common_ie6.css" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\apiMenu.gif" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\apiMenu.png" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\background.jpg" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\chinese.png" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\close.png" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\contact-bg.png" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\english.png" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\header-bg.png" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\lightbulb.png" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\overlay_arrow.gif" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\overlay_arrow.png" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\overlay_bg.png" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\overlay_close_IE6.gif" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\zTreeStandard.gif" />
+    <Content Include="Content\Tools\zTree\api\apiCss\img\zTreeStandard.png" />
+    <Content Include="Content\Tools\zTree\api\apiCss\jquery-1.6.2.min.js" />
+    <Content Include="Content\Tools\zTree\api\apiCss\jquery.ztree.core.js" />
+    <Content Include="Content\Tools\zTree\api\apiCss\zTreeStyleForApi.css" />
+    <Content Include="Content\Tools\zTree\api\API_cn.html" />
+    <Content Include="Content\Tools\zTree\api\API_en.html" />
+    <Content Include="Content\Tools\zTree\api\cn\fn.zTree.destroy.html" />
+    <Content Include="Content\Tools\zTree\api\cn\fn.zTree.getZTreeObj.html" />
+    <Content Include="Content\Tools\zTree\api\cn\fn.zTree.init.html" />
+    <Content Include="Content\Tools\zTree\api\cn\fn.zTree._z.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.async.autoParam.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.async.contentType.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.async.dataFilter.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.async.dataType.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.async.enable.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.async.otherParam.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.async.type.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.async.url.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeAsync.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeCheck.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeClick.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeCollapse.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeDblClick.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeDrag.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeDragOpen.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeDrop.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeEditName.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeExpand.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeMouseDown.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeMouseUp.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeRemove.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeRename.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.beforeRightClick.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onAsyncError.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onAsyncSuccess.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onCheck.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onClick.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onCollapse.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onDblClick.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onDrag.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onDragMove.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onDrop.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onExpand.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onMouseDown.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onMouseUp.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onNodeCreated.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onRemove.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onRename.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.callback.onRightClick.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.check.autoCheckTrigger.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.check.chkboxType.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.check.chkDisabledInherit.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.check.chkStyle.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.check.enable.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.check.nocheckInherit.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.check.radioType.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.data.keep.leaf.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.data.keep.parent.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.data.key.checked.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.data.key.children.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.data.key.name.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.data.key.title.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.data.key.url.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.data.simpleData.enable.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.data.simpleData.idKey.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.data.simpleData.pIdKey.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.data.simpleData.rootPId.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.drag.autoExpandTrigger.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.drag.autoOpenTime.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.drag.borderMax.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.drag.borderMin.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.drag.inner.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.drag.isCopy.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.drag.isMove.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.drag.maxShowNodeNum.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.drag.minMoveSize.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.drag.next.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.drag.prev.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.editNameSelectAll.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.enable.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.removeTitle.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.renameTitle.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.showRemoveBtn.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.edit.showRenameBtn.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.treeId.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.treeObj.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.view.addDiyDom.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.view.addHoverDom.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.view.autoCancelSelected.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.view.dblClickExpand.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.view.expandSpeed.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.view.fontCss.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.view.nameIsHTML.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.view.removeHoverDom.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.view.selectedMulti.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.view.showIcon.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.view.showLine.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.view.showTitle.html" />
+    <Content Include="Content\Tools\zTree\api\cn\setting.view.txtSelectedEnable.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.checked.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.checkedOld.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.check_Child_State.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.check_Focus.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.children.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.chkDisabled.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.click.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.diy.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.editNameFlag.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.getCheckStatus.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.getIndex.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.getNextNode.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.getParentNode.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.getPath.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.getPreNode.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.halfCheck.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.icon.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.iconClose.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.iconOpen.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.iconSkin.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.isAjaxing.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.isFirstNode.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.isHidden.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.isHover.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.isLastNode.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.isParent.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.level.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.name.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.nocheck.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.open.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.parentTId.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.target.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.tId.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.url.html" />
+    <Content Include="Content\Tools\zTree\api\cn\treeNode.zAsync.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.addNodes.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.cancelEditName.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.cancelSelectedNode.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.checkAllNodes.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.checkNode.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.copyNode.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.destroy.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.editName.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.expandAll.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.expandNode.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.getChangeCheckedNodes.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.getCheckedNodes.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.getNodeByParam.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.getNodeByTId.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.getNodeIndex.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.getNodes.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.getNodesByFilter.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.getNodesByParam.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.getNodesByParamFuzzy.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.getSelectedNodes.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.hideNode.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.hideNodes.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.moveNode.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.reAsyncChildNodes.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.refresh.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.removeChildNodes.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.removeNode.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.selectNode.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.setChkDisabled.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.setEditable.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.setting.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.showNode.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.showNodes.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.transformToArray.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.transformTozTreeNodes.html" />
+    <Content Include="Content\Tools\zTree\api\cn\zTreeObj.updateNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\fn.zTree.destroy.html" />
+    <Content Include="Content\Tools\zTree\api\en\fn.zTree.getZTreeObj.html" />
+    <Content Include="Content\Tools\zTree\api\en\fn.zTree.init.html" />
+    <Content Include="Content\Tools\zTree\api\en\fn.zTree._z.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.async.autoParam.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.async.contentType.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.async.dataFilter.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.async.dataType.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.async.enable.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.async.otherParam.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.async.type.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.async.url.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeAsync.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeCheck.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeClick.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeCollapse.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeDblClick.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeDrag.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeDragOpen.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeDrop.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeEditName.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeExpand.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeMouseDown.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeMouseUp.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeRemove.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeRename.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.beforeRightClick.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onAsyncError.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onAsyncSuccess.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onCheck.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onClick.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onCollapse.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onDblClick.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onDrag.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onDragMove.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onDrop.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onExpand.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onMouseDown.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onMouseUp.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onNodeCreated.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onRemove.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onRename.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.callback.onRightClick.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.check.autoCheckTrigger.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.check.chkboxType.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.check.chkDisabledInherit.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.check.chkStyle.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.check.enable.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.check.nocheckInherit.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.check.radioType.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.data.keep.leaf.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.data.keep.parent.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.data.key.checked.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.data.key.children.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.data.key.name.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.data.key.title.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.data.key.url.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.data.simpleData.enable.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.data.simpleData.idKey.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.data.simpleData.pIdKey.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.data.simpleData.rootPId.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.drag.autoExpandTrigger.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.drag.autoOpenTime.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.drag.borderMax.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.drag.borderMin.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.drag.inner.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.drag.isCopy.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.drag.isMove.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.drag.maxShowNodeNum.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.drag.minMoveSize.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.drag.next.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.drag.prev.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.editNameSelectAll.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.enable.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.removeTitle.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.renameTitle.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.showRemoveBtn.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.edit.showRenameBtn.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.treeId.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.treeObj.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.view.addDiyDom.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.view.addHoverDom.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.view.autoCancelSelected.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.view.dblClickExpand.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.view.expandSpeed.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.view.fontCss.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.view.nameIsHTML.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.view.removeHoverDom.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.view.selectedMulti.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.view.showIcon.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.view.showLine.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.view.showTitle.html" />
+    <Content Include="Content\Tools\zTree\api\en\setting.view.txtSelectedEnable.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.checked.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.checkedOld.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.check_Child_State.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.check_Focus.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.children.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.chkDisabled.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.click.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.diy.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.editNameFlag.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.getCheckStatus.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.getIndex.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.getNextNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.getParentNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.getPath.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.getPreNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.halfCheck.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.icon.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.iconClose.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.iconOpen.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.iconSkin.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.isAjaxing.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.isFirstNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.isHidden.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.isHover.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.isLastNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.isParent.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.level.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.name.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.nocheck.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.open.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.parentTId.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.target.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.tId.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.url.html" />
+    <Content Include="Content\Tools\zTree\api\en\treeNode.zAsync.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.addNodes.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.cancelEditName.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.cancelSelectedNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.checkAllNodes.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.checkNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.copyNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.destroy.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.editName.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.expandAll.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.expandNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.getChangeCheckedNodes.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.getCheckedNodes.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.getNodeByParam.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.getNodeByTId.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.getNodeIndex.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.getNodes.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.getNodesByFilter.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.getNodesByParam.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.getNodesByParamFuzzy.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.getSelectedNodes.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.hideNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.hideNodes.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.moveNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.reAsyncChildNodes.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.refresh.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.removeChildNodes.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.removeNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.selectNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.setChkDisabled.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.setEditable.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.setting.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.showNode.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.showNodes.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.transformToArray.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.transformTozTreeNodes.html" />
+    <Content Include="Content\Tools\zTree\api\en\zTreeObj.updateNode.html" />
+    <Content Include="Content\Tools\zTree\css\awesomeStyle\awesome.css" />
+    <Content Include="Content\Tools\zTree\css\awesomeStyle\img\loading.gif" />
+    <Content Include="Content\Tools\zTree\css\demo.css" />
+    <Content Include="Content\Tools\zTree\css\metroStyle\img\line_conn.png" />
+    <Content Include="Content\Tools\zTree\css\metroStyle\img\loading.gif" />
+    <Content Include="Content\Tools\zTree\css\metroStyle\img\metro.gif" />
+    <Content Include="Content\Tools\zTree\css\metroStyle\img\metro.png" />
+    <Content Include="Content\Tools\zTree\css\metroStyle\metroStyle.css" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\img\diy\1_close.png" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\img\diy\1_open.png" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\img\diy\2.png" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\img\diy\3.png" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\img\diy\4.png" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\img\diy\5.png" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\img\diy\6.png" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\img\diy\7.png" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\img\diy\8.png" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\img\diy\9.png" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\img\line_conn.gif" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\img\loading.gif" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\img\zTreeStandard.gif" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\img\zTreeStandard.png" />
+    <Content Include="Content\Tools\zTree\css\zTreeStyle\zTreeStyle.css" />
+    <Content Include="Content\Tools\zTree\demo\cn\bigdata\common.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\bigdata\diy_async.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\bigdata\page.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\async.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\async_fun.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\click.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\custom_font.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\custom_icon.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\custom_iconSkin.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\expand.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\noicon.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\noline.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\otherMouse.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\searchNodes.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\simpleData.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\standardData.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\update_fun.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\core\url.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\excheck\checkbox.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\excheck\checkbox_chkDisabled.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\excheck\checkbox_count.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\excheck\checkbox_fun.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\excheck\checkbox_halfCheck.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\excheck\checkbox_nocheck.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\excheck\radio.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\excheck\radio_chkDisabled.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\excheck\radio_fun.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\excheck\radio_halfCheck.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\excheck\radio_nocheck.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\exedit\async_edit.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\exedit\drag.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\exedit\drag_fun.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\exedit\drag_super.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\exedit\edit.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\exedit\edit_fun.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\exedit\edit_super.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\exedit\multiTree.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\exhide\checkbox.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\exhide\common.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\exhide\radio.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\index.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\asyncForAll.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\awesome.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\checkbox_radio.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\diydom.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\dragWithOther.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\left_menu.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\left_menuForOutLook.gif" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\left_menuForOutLook.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\left_menuForOutLook.png" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\metro.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\oneclick.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\oneroot.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\rightClickMenu.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\select_menu.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\select_menu_checkbox.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\select_menu_radio.html" />
+    <Content Include="Content\Tools\zTree\demo\cn\super\singlepath.html" />
+    <Content Include="Content\Tools\zTree\demo\en\bigdata\common.html" />
+    <Content Include="Content\Tools\zTree\demo\en\bigdata\diy_async.html" />
+    <Content Include="Content\Tools\zTree\demo\en\bigdata\page.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\async.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\async_fun.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\click.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\custom_font.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\custom_icon.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\custom_iconSkin.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\expand.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\noicon.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\noline.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\otherMouse.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\searchNodes.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\simpleData.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\standardData.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\update_fun.html" />
+    <Content Include="Content\Tools\zTree\demo\en\core\url.html" />
+    <Content Include="Content\Tools\zTree\demo\en\excheck\checkbox.html" />
+    <Content Include="Content\Tools\zTree\demo\en\excheck\checkbox_chkDisabled.html" />
+    <Content Include="Content\Tools\zTree\demo\en\excheck\checkbox_count.html" />
+    <Content Include="Content\Tools\zTree\demo\en\excheck\checkbox_fun.html" />
+    <Content Include="Content\Tools\zTree\demo\en\excheck\checkbox_halfCheck.html" />
+    <Content Include="Content\Tools\zTree\demo\en\excheck\checkbox_nocheck.html" />
+    <Content Include="Content\Tools\zTree\demo\en\excheck\radio.html" />
+    <Content Include="Content\Tools\zTree\demo\en\excheck\radio_chkDisabled.html" />
+    <Content Include="Content\Tools\zTree\demo\en\excheck\radio_fun.html" />
+    <Content Include="Content\Tools\zTree\demo\en\excheck\radio_halfCheck.html" />
+    <Content Include="Content\Tools\zTree\demo\en\excheck\radio_nocheck.html" />
+    <Content Include="Content\Tools\zTree\demo\en\exedit\async_edit.html" />
+    <Content Include="Content\Tools\zTree\demo\en\exedit\drag.html" />
+    <Content Include="Content\Tools\zTree\demo\en\exedit\drag_fun.html" />
+    <Content Include="Content\Tools\zTree\demo\en\exedit\drag_super.html" />
+    <Content Include="Content\Tools\zTree\demo\en\exedit\edit.html" />
+    <Content Include="Content\Tools\zTree\demo\en\exedit\edit_fun.html" />
+    <Content Include="Content\Tools\zTree\demo\en\exedit\edit_super.html" />
+    <Content Include="Content\Tools\zTree\demo\en\exedit\multiTree.html" />
+    <Content Include="Content\Tools\zTree\demo\en\exhide\checkbox.html" />
+    <Content Include="Content\Tools\zTree\demo\en\exhide\common.html" />
+    <Content Include="Content\Tools\zTree\demo\en\exhide\radio.html" />
+    <Content Include="Content\Tools\zTree\demo\en\index.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\asyncForAll.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\awesome.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\checkbox_radio.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\diydom.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\dragWithOther.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\left_menu.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\left_menuForOutLook.gif" />
+    <Content Include="Content\Tools\zTree\demo\en\super\left_menuForOutLook.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\left_menuForOutLook.png" />
+    <Content Include="Content\Tools\zTree\demo\en\super\metro.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\oneclick.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\oneroot.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\rightClickMenu.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\select_menu.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\select_menu_checkbox.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\select_menu_radio.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\singlepath.html" />
+    <Content Include="Content\Tools\zTree\demo\en\super\ztree.html" />
+    <Content Include="Content\Tools\zTree\js\jquery-1.4.4.min.js" />
+    <Content Include="Content\Tools\zTree\js\jquery.ztree.all.js" />
+    <Content Include="Content\Tools\zTree\js\jquery.ztree.all.min.js" />
+    <Content Include="Content\Tools\zTree\js\jquery.ztree.core.js" />
+    <Content Include="Content\Tools\zTree\js\jquery.ztree.core.min.js" />
+    <Content Include="Content\Tools\zTree\js\jquery.ztree.excheck.js" />
+    <Content Include="Content\Tools\zTree\js\jquery.ztree.excheck.min.js" />
+    <Content Include="Content\Tools\zTree\js\jquery.ztree.exedit.js" />
+    <Content Include="Content\Tools\zTree\js\jquery.ztree.exedit.min.js" />
+    <Content Include="Content\Tools\zTree\js\jquery.ztree.exhide.js" />
+    <Content Include="Content\Tools\zTree\js\jquery.ztree.exhide.min.js" />
+    <Content Include="Content\Tools\zTree\log v3.x.txt" />
+    <Content Include="crossdomain.xml" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Templates\教职工用户导入模板.xls" />
+    <Content Include="Content\Tools\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\Tools\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\Tools\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Tools\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Tools\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Tools\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Tools\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Tools\jquery\jquery-1.10.2.min.map" />
+    <Content Include="Content\Tools\uploadify\check-exists.php" />
+    <Content Include="Content\Tools\uploadify\index.php" />
+    <Content Include="Content\Tools\uploadify\uploadify.php" />
+    <Content Include="Content\Tools\zTree\.gitattributes" />
+    <Content Include="Content\Tools\zTree\.gitignore" />
+    <Content Include="Content\Tools\zTree\css\awesomeStyle\awesome.less" />
+    <Content Include="Content\Tools\zTree\css\awesomeStyle\fa.less" />
+    <Content Include="Content\Tools\zTree\demo\cn\asyncData\getNodes.php" />
+    <Content Include="Content\Tools\zTree\demo\cn\asyncData\getNodesForBigData.php" />
+    <Content Include="Content\Tools\zTree\demo\en\asyncData\getNodes.php" />
+    <Content Include="Content\Tools\zTree\demo\en\asyncData\getNodesForBigData.php" />
+    <Content Include="Content\Tools\zTree\js\ztree.3.5.26.zip" />
+    <Content Include="Content\Tools\zTree\package.json" />
+    <Content Include="Content\Tools\zTree\README.md" />
+    <Content Include="Content\Tools\zTree\zTree.v3.jquery.json" />
+    <Content Include="Content\Tools\ueditor\net\config.json" />
+    <Content Include="Content\Tools\ueditor\net\controller.ashx" />
+    <Content Include="Content\Tools\ueditor\net\README.md" />
+    <Content Include="Content\Tools\ueditor\net\Web.config" />
+    <Content Include="Content\Tools\ueditor\third-party\jquery-1.10.2.min.map" />
+    <Content Include="Content\Tools\ueditor\third-party\video-js\font\vjs.eot" />
+    <Content Include="Content\Tools\ueditor\third-party\video-js\font\vjs.svg" />
+    <Content Include="Content\Tools\ueditor\third-party\video-js\font\vjs.ttf" />
+    <Content Include="Content\Tools\ueditor\third-party\video-js\font\vjs.woff" />
+    <Content Include="Content\Tools\kindeditor\asp.net\bin\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\asp.net\file_manager_json.ashx" />
+    <Content Include="Content\Tools\kindeditor\asp.net\upload_json.ashx" />
+    <Content Include="Content\Tools\kindeditor\asp.net\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\lang\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\php\demo.php" />
+    <Content Include="Content\Tools\kindeditor\php\file_manager_json.php" />
+    <Content Include="Content\Tools\kindeditor\php\JSON.php" />
+    <Content Include="Content\Tools\kindeditor\php\upload_json.php" />
+    <Content Include="Content\Tools\kindeditor\php\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\anchor\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\baidumap\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\clearhtml\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\code\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\images\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\emoticons\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\filemanager\images\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\filemanager\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\flash\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\image\images\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\image\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\insertfile\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\lineheight\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\link\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\map\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\media\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\multiimage\images\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\multiimage\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\pagebreak\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\plainpaste\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\preview\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\quickformat\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\table\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\template\html\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\template\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\plugins\wordpaste\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\themes\common\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\themes\default\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\themes\qq\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\themes\simple\vssver2.scc" />
+    <Content Include="Content\Tools\kindeditor\vssver2.scc" />
+    <None Include="Properties\PublishProfiles\webconfig.pubxml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\DictSubject\Add.cshtml" />
+    <Content Include="Views\DictSubject\Edit.cshtml" />
+    <Content Include="Views\DictSubject\Index.cshtml" />
+    <Content Include="Views\DictSubject\_IndexGrid.cshtml" />
+    <Content Include="Views\ResourceApprove\Index.cshtml" />
+    <Content Include="Views\ResourceApprove\_IndexGrid.cshtml" />
+    <Content Include="Views\ResourceHome\Index.cshtml" />
+    <Content Include="Views\ResourceHome\_IndexGrid.cshtml" />
+    <Content Include="Views\ResourcePreview\Index.cshtml" />
+    <Content Include="Views\ResourceSearch\Index.cshtml" />
+    <Content Include="Views\ResourceSearch\_IndexGrid.cshtml" />
+    <Content Include="Views\ResourceUpLoad\Add.cshtml" />
+    <Content Include="Views\ResourceUpLoad\Index.cshtml" />
+    <Content Include="Views\Resource\Index.cshtml" />
+    <Content Include="Views\Resource\_IndexGrid.cshtml" />
+    <Content Include="Views\Shared\_LayoutTopLeft.cshtml" />
+    <Content Include="Views\SyActiv\Active.cshtml" />
+    <Content Include="Views\SyActiv\Index.cshtml" />
+    <Content Include="Views\SyClass\Add.cshtml" />
+    <Content Include="Views\SyClass\Edit.cshtml" />
+    <Content Include="Views\SyClass\Index.cshtml" />
+    <Content Include="Views\SyClass\_IndexGrid.cshtml" />
+    <Content Include="Views\SyGrade\Add.cshtml" />
+    <Content Include="Views\SyGrade\Edit.cshtml" />
+    <Content Include="Views\SyGrade\EditSys.cshtml" />
+    <Content Include="Views\SyGrade\Graduate.cshtml" />
+    <Content Include="Views\SyGrade\Index.cshtml" />
+    <Content Include="Views\SyGrade\Up.cshtml" />
+    <Content Include="Views\SyGrade\_IndexGrid.cshtml" />
+    <Content Include="Views\SyInit\Edit.cshtml" />
+    <Content Include="Views\SyInit\Index.cshtml" />
+    <Content Include="Views\SyLogBug\Index.cshtml" />
+    <Content Include="Views\SyLogBug\_IndexGrid.cshtml" />
+    <Content Include="Views\SyLogOper\Index.cshtml" />
+    <Content Include="Views\SyLogOper\_IndexGrid.cshtml" />
+    <Content Include="Views\SyLogPerf\Index.cshtml" />
+    <Content Include="Views\SyLogPerf\_IndexGrid.cshtml" />
+    <Content Include="Views\SyNavSystem\Add.cshtml" />
+    <Content Include="Views\SyNavSystem\AddCatalog.cshtml" />
+    <Content Include="Views\SyNavSystem\Edit.cshtml" />
+    <Content Include="Views\SyNavSystem\EditCatalog.cshtml" />
+    <Content Include="Views\SyNavSystem\Index.cshtml" />
+    <Content Include="Views\SyNavSystem\_IndexGrid.cshtml" />
+    <Content Include="Views\SyNav\Add.cshtml" />
+    <Content Include="Views\SyNav\Edit.cshtml" />
+    <Content Include="Views\SyNav\Index.cshtml" />
+    <Content Include="Views\SyNav\_IndexGrid.cshtml" />
+    <Content Include="Views\SyPassport\Login.cshtml" />
+    <Content Include="Views\SyRole\Add.cshtml" />
+    <Content Include="Views\SyRole\Edit.cshtml" />
+    <Content Include="Views\SyRole\Index.cshtml" />
+    <Content Include="Views\SyRole\Users.cshtml" />
+    <Content Include="Views\SyRole\_IndexGrid.cshtml" />
+    <Content Include="Views\SySchool\Edit.cshtml" />
+    <Content Include="Views\SySchool\Index.cshtml" />
+    <Content Include="Views\SyUserManager\Add.cshtml" />
+    <Content Include="Views\SyUserManager\Edit.cshtml" />
+    <Content Include="Views\SyUserManager\Index.cshtml" />
+    <Content Include="Views\SyUserManager\_IndexGrid.cshtml" />
+    <Content Include="Views\SyUserStudent\Add.cshtml" />
+    <Content Include="Views\SyUserStudent\Edit.cshtml" />
+    <Content Include="Views\SyUserStudent\Index.cshtml" />
+    <Content Include="Views\SyUserStudent\_IndexGrid.cshtml" />
+    <Content Include="Views\SyUserTeacher\Add.cshtml" />
+    <Content Include="Views\SyUserTeacher\Edit.cshtml" />
+    <Content Include="Views\SyUserTeacher\Import.cshtml" />
+    <Content Include="Views\SyUserTeacher\Index.cshtml" />
+    <Content Include="Views\SyUserTeacher\_IndexGrid.cshtml" />
+    <Content Include="Views\SyLogRoomOper\Index.cshtml" />
+    <Content Include="Views\SyLogRoomOper\_IndexGrid.cshtml" />
+    <Content Include="Views\ResourceDynamic\Index.cshtml" />
+    <Content Include="Views\SyRole\_UsersGrid.cshtml" />
+    <Content Include="Views\SyUserStudent\Import.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Temp\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Fz.Common.Dict\Fz.Common.Dict.csproj">
+      <Project>{549f09bf-0e74-4f34-8ce3-e3f15ae5433b}</Project>
+      <Name>Fz.Common.Dict</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Fz.Common.Model\Fz.Common.Model.csproj">
+      <Project>{612d1c22-1ab0-443f-a823-1a63a9fc2d82}</Project>
+      <Name>Fz.Common.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Fz.Common\Fz.Common.csproj">
+      <Project>{8af85769-2e15-4973-9d88-d655281139e7}</Project>
+      <Name>Fz.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataBase\FzDatabase.Basic\FzDatabase.Basic.csproj">
+      <Project>{6E896D11-22B5-4A95-83E5-C292E62EC683}</Project>
+      <Name>FzDatabase.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataBase\FzDatabase.Bigdata\FzDatabase.Bigdata.csproj">
+      <Project>{8d798d12-ddd4-46ad-a739-4871787a5a56}</Project>
+      <Name>FzDatabase.Bigdata</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataBase\FzDatabase.ModMetaBreach\FzDatabase.ModMetaBreach.csproj">
+      <Project>{46547B11-3E56-4A90-8DED-30AEA09F84B1}</Project>
+      <Name>FzDatabase.ModMetaBreach</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataBase\FzDatabase.Resource\FzDatabase.Resource.csproj">
+      <Project>{5B288D18-21EF-456E-BB4B-7DCBD4030E74}</Project>
+      <Name>FzDatabase.Resource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataBase\FzDatabase.Room\FzDatabase.Room.csproj">
+      <Project>{56b8ab6e-9032-40cb-a990-5b7c2b2733b6}</Project>
+      <Name>FzDatabase.Room</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Resource\Fz.Resource.Bll\Fz.Resource.Bll.csproj">
+      <Project>{716e22a2-1227-4cea-be77-680cfbbb26f0}</Project>
+      <Name>Fz.Resource.Bll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Resource\Fz.Resource.VModel\Fz.Resource.VModel.csproj">
+      <Project>{b9109ced-8121-4acc-9aa3-e4aa59927963}</Project>
+      <Name>Fz.Resource.VModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fz.Core.Bll\Fz.Core.Bll.csproj">
+      <Project>{45ade99c-e917-4ede-9084-4915c5b185f0}</Project>
+      <Name>Fz.Core.Bll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fz.Core.VModelAPI\Fz.Core.VModelAPI.csproj">
+      <Project>{a7d1a26e-f115-4455-a6f0-95cd95606e45}</Project>
+      <Name>Fz.Core.VModelAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fz.Core.VModel\Fz.Core.VModel.csproj">
+      <Project>{1ab7e2ec-9a14-4ec5-a9b8-bde25010ecb5}</Project>
+      <Name>Fz.Core.VModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fz.Room.VModel\Fz.Room.VModel.csproj">
+      <Project>{c3ae67fb-9077-4232-bfa2-3dd8af86a6f7}</Project>
+      <Name>Fz.Room.VModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5418</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2500/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此项目引用这台计算机上缺少的 NuGet 程序包。使用 NuGet 程序包还原可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

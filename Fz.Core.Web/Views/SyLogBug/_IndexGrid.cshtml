@@ -1,0 +1,31 @@
+﻿@model List<Fz.Core.VModel.SyLogBug.Grid>
+<table class="table table-bordered table-hover" style="table-layout:fixed" >
+    <thead>
+        <tr>
+            <th style="width:200px;">模块名称</th>
+            <th style="width:200px;">功能名称</th>
+            <th style="width:100px;">请求方式</th>
+            <th style="width:200px;">报错时间</th>
+            <th>错误描述</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr title="@item.Message">
+                    <td>@item.ControllerName</td>
+                    <td>@item.ActionName</td>
+                    <td>@item.HttpMethod</td>
+                    <td>@item.CreateTime</td>
+                    <td style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">@item.Message</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr><td class="nodata" colspan="5">@Fz.Common.Const.Grid_NoData</td></tr>
+        }
+    </tbody>
+</table>

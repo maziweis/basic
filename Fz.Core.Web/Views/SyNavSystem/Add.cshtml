@@ -1,0 +1,67 @@
+﻿@{
+    Layout = null;
+    ViewBag.ParentNavs = Fz.Core.Bll.SySystemBll.GetParentNavs();
+    ViewBag.PageOpens = Fz.Common.Dict.NavOpen.Get();
+    ViewBag.IsEnableds = Fz.Common.Dict.IsEnabled.Get();
+    ViewBag.YesNos = Fz.Common.Dict.YesNo.Get();
+}
+@model Fz.Core.VModel.SySystem.Form
+
+@using (Ajax.BeginForm("Add", "SyNavSystem", new AjaxOptions { HttpMethod = "Post", OnSuccess = "formSuccess(data)" }, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">系统导航新增</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            @Html.LabelFor(m => m.PId, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.PId, new SelectList(ViewBag.ParentNavs, "key", "value"), "--请选择--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.PId)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @autocomplete = "off" })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Url, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Url, new { @class = "form-control", @autocomplete = "off" })
+                @Html.ValidationMessageFor(m => m.Url)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.PageOpen, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.PageOpen, new SelectList(ViewBag.PageOpens, "key", "value"), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.IsNav, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.IsNav, new SelectList(ViewBag.YesNos, "key", "value"), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Sort, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Sort, new { @class = "form-control", @autocomplete = "off" })
+                @Html.ValidationMessageFor(m => m.Sort)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.IsEnabled, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.IsEnabled, new SelectList(ViewBag.IsEnableds, "key", "value"), new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">确定</button>
+    </div>
+}

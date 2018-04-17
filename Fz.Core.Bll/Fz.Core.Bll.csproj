@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{45ADE99C-E917-4EDE-9084-4915C5B185F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fz.Core.Bll</RootNamespace>
+    <AssemblyName>Fz.Core.Bll</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BigdataBll.cs" />
+    <Compile Include="DictEditionBll.cs" />
+    <Compile Include="DictSubjectBll.cs" />
+    <Compile Include="DictTextbookBll.cs" />
+    <Compile Include="DictTextbookCatalogBll.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SyClassBll.cs" />
+    <Compile Include="SyGradeBll.cs" />
+    <Compile Include="SyLoginBll.cs" />
+    <Compile Include="SyNavBll.cs" />
+    <Compile Include="SyRoleBll.cs" />
+    <Compile Include="SySchoolBll.cs" />
+    <Compile Include="SysInitBll.cs" />
+    <Compile Include="SyStudentBll.cs" />
+    <Compile Include="SySystemBll.cs" />
+    <Compile Include="SyTeacherBll.cs" />
+    <Compile Include="SyUserBll.cs" />
+    <Compile Include="SyUserTicketBll.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Fz.Common.Dict\Fz.Common.Dict.csproj">
+      <Project>{549f09bf-0e74-4f34-8ce3-e3f15ae5433b}</Project>
+      <Name>Fz.Common.Dict</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Fz.Common.Model\Fz.Common.Model.csproj">
+      <Project>{612d1c22-1ab0-443f-a823-1a63a9fc2d82}</Project>
+      <Name>Fz.Common.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Fz.Common\Fz.Common.csproj">
+      <Project>{8af85769-2e15-4973-9d88-d655281139e7}</Project>
+      <Name>Fz.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataBase\FzDatabase.Basic\FzDatabase.Basic.csproj">
+      <Project>{6e896d11-22b5-4a95-83e5-c292e62ec683}</Project>
+      <Name>FzDatabase.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataBase\FzDatabase.Bigdata\FzDatabase.Bigdata.csproj">
+      <Project>{8d798d12-ddd4-46ad-a739-4871787a5a56}</Project>
+      <Name>FzDatabase.Bigdata</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataBase\FzDatabase.ModMetaBreach\FzDatabase.ModMetaBreach.csproj">
+      <Project>{46547B11-3E56-4A90-8DED-30AEA09F84B1}</Project>
+      <Name>FzDatabase.ModMetaBreach</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Resource\Fz.Resource.Bll\Fz.Resource.Bll.csproj">
+      <Project>{716E22A2-1227-4CEA-BE77-680CFBBB26F0}</Project>
+      <Name>Fz.Resource.Bll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fz.Core.VModelAPI\Fz.Core.VModelAPI.csproj">
+      <Project>{a7d1a26e-f115-4455-a6f0-95cd95606e45}</Project>
+      <Name>Fz.Core.VModelAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fz.Core.VModel\Fz.Core.VModel.csproj">
+      <Project>{1ab7e2ec-9a14-4ec5-a9b8-bde25010ecb5}</Project>
+      <Name>Fz.Core.VModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

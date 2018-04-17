@@ -1,0 +1,133 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Fz.Core.VModel.SyPassport.UserInfo userInfo = System.Web.HttpContext.Current.Session["UserInfo"] as Fz.Core.VModel.SyPassport.UserInfo;
+    string _controller = ViewContext.RouteData.Values["controller"].ToString();
+    string _action = ViewContext.RouteData.Values["action"].ToString();
+    string _id = ViewBag.PageTypeId == null ? null : ViewBag.PageTypeId.ToString();
+    Fz.Common.Dict.Model.PageModel page = Fz.Common.Dict.Pages.Get(_controller, _action, _id);
+    List<Fz.Core.VModel.Common.Nav> navs = page == null ? null : Fz.Core.Bll.SyNavBll.GetNavs(page.SId, userInfo.Navs);
+
+    var n2 = page == null ? null : Fz.Core.Bll.SySystemBll.GetList().Where(w => w.Id == page.SId).FirstOrDefault();
+    var n1 = n2 == null ? null : Fz.Core.Bll.SyNavBll.GetList().Where(w => w.Id == n2.PId).FirstOrDefault();
+    var n3 = page == null ? null : Fz.Core.Bll.SyNavBll.GetList().Where(w => w.Id == page.NavId).FirstOrDefault();
+}
+
+<div class="topCont">
+    <ol class="breadcrumb">
+        @*@if (n1 != null)
+        {
+            <li>@n1.Name</li>
+        }*@
+        @if (n2 != null)
+        {
+            <li><a href="@n2.Url">@n2.Name</a></li>
+        }
+        @if (n3 != null)
+        {
+            <li><a href="@n3.Url">@n3.Name</a></li>
+        }
+        @if (page != null)
+        {
+            <li class="active">@page.Name</li>
+        }
+    </ol>
+</div>
+<div class="leftCont">
+    @if (navs != null)
+    {
+        var navs1 = navs.Where(w => w.Level == 1);
+
+        <div class="panel-group" id="accordion">
+
+            @foreach (var nav1 in navs1)
+            {
+                var navs2 = navs.Where(w => w.PId == nav1.Id);
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+
+                        @if (string.IsNullOrWhiteSpace(nav1.Url))
+                        {
+                            if (!string.IsNullOrWhiteSpace(nav1.Icon))
+                            {
+                                <i class="@nav1.Icon">&nbsp;</i>
+                            }
+                            <h4 class="panel-title">
+                                @nav1.Name
+                            </h4>
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrWhiteSpace(nav1.Icon))
+                            {
+                                <i class="@nav1.Icon">&nbsp;</i>
+                            }
+                            <h4 class="panel-title">
+                                @if (nav1.PageOpen == 1)
+                                {
+                                    <a href="@nav1.Url">@nav1.Name</a>
+                                }
+                                else
+                                {
+                                    <a href="@nav1.Url" target="_blank">@nav1.Name</a>
+                                }
+                            </h4>
+                        }
+
+                    </div>
+
+                    @if (navs2 != null)
+                    {
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <ul class="list-group">
+                                    @foreach (var nav2 in navs2)
+                                    {
+                                        if (nav2.Id == page.NavId)
+                                        {
+                                            <li class="list-group-item on">
+                                                @if (nav2.PageOpen == 1)
+                                                {
+                                                    <a href="@nav2.Url">@nav2.Name</a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="@nav2.Url" target="_blank">@nav2.Name</a>
+                                                }
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="list-group-item">
+                                                @if (nav2.PageOpen == 1)
+                                                {
+                                                    <a href="@nav2.Url">@nav2.Name</a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="@nav2.Url" target="_blank">@nav2.Name</a>
+                                                }
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            }
+
+        </div>
+    }
+</div>
+<div class="rightCont">
+    @RenderBody()
+</div>
+
+@section Scripts {
+    @RenderSection("scripts", required: false)
+}
+@section styles {
+    @RenderSection("styles", required: false)
+}

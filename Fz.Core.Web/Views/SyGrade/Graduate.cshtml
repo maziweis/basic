@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+}
+
+@model Fz.Core.VModel.SyGrade.Graduate
+
+@using (Ajax.BeginForm("SaveGraduate", "SyGrade", new AjaxOptions { HttpMethod = "Post", OnSuccess = "formSuccess(data)" }, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">毕业</h4>
+    </div>
+    <div class="modal-body">
+        <div>@Html.ValidationMessage("NotGraduate")</div>
+        <div class="tipWords">
+            确定对<span>@Model.GradeName</span>执行毕业操作？毕业后，班主任和任课老师将不能在平台上对以下学生进行管理和教学！当前<span>@Model.GradeName</span>共有<span>@Model.ClassCount</span>个班计<span>@Model.StudentCount</span>名学生。
+        </div>
+        <div>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>年级</th>
+                        <th>班级</th>
+                        <th>学生人数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.GraduateGrids != null && Model.GraduateGrids.Count > 0)
+                    {
+                        int i = 1;
+                        foreach (var item in Model.GraduateGrids)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.GradeName</td>
+                                <td>@item.ClassName</td>
+                                <td>@item.StudentCount</td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        <tr><td class="nodata" colspan="4">@Fz.Common.Const.Grid_NoData</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">确定</button>
+        <button class="btn btn-default" data-dismiss="modal">取消</button>
+    </div>
+}

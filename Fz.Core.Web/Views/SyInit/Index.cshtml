@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTopLeft.cshtml";
+}
+@model Fz.Core.VModel.SyInit.InitForm
+<div class="schoolInfo sysAct">
+    <div class="infoTable">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="rowTitle" width="90">学校名称：</td>
+                    <td class="rowContent">@Model.SchoolName</td>
+                </tr>
+                <tr>
+                    <td class="rowTitle">浏览器Icon：</td>
+                    <td class="rowContent"><img class="Icon" src="@Url.Content("~/favicon.ico?tempid="+(new Random()).Next())" alt="Icon" width="25" height="25"/></td>
+                </tr>
+                <tr>
+                    <td class="rowTitle">授权信息：</td>
+                    <td class="rowContent">@Model.AuthMessage</td>
+                </tr>
+                @foreach (var m in Model.choEdi)
+                {
+                    <tr>
+                        <td class="rowTitle">@m.SubName：</td>
+                        <td class="rowContent">
+                           @foreach (var edi in m.EdiList)
+                           {
+                               if (edi.IsEnabled)
+                               {
+                                  <label>@edi.EdiName</label>
+                               }
+                           }                           
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="buttonBox"><a class="btn btn-default" href="@Url.Action("Edit")">初始设置</a></div>
+    </div>
+</div>

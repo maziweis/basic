@@ -1,0 +1,160 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTopLeft.cshtml";
+    ViewBag.Subjects = Fz.Resource.Bll.ResourceUploadBll.GetSelectSubjects();
+    ViewBag.Editions = Fz.Resource.Bll.ResourceUploadBll.GetSelectEditionsBySubjectId(Model.SubjectID);
+    ViewBag.Grades = Fz.Resource.Bll.ResourceUploadBll.GetSelectGrade();
+    Dictionary<int, string> ResourceStyle = Fz.Resource.Bll.ResourceUploadBll.GetResourceType();
+}
+@model Fz.Resource.VModel.ResourceUpLoad.Form
+    <div class="rightCont">
+        <div class="filterC">
+            <div class="searchC clearfix">
+                <div class="col-md-10">
+                    <div class="line">
+                        <div class="seleBox">
+                            @Html.DropDownListFor(m => m.SubjectID, new SelectList(ViewBag.Subjects, "key", "value"), new { @class = "form-control", @onchange = "SubjectChange(this)" })
+                            @Html.DropDownListFor(m => m.EditionID, new SelectList(ViewBag.Editions, "key", "value"),"全部版本",  new { @class = "form-control", @onchange = "EditionChange(this)" })
+                            @Html.DropDownListFor(m => m.GradeID, new SelectList(ViewBag.Grades, "key", "value"),"全部年级",new { @class = "form-control", @onchange = "GradeChange(this)" })
+                        </div>
+
+                        <div class="selectF">
+                            @Html.TextBoxFor(m => m.UnitName, new { @placeholder = "当前没有教材目录", @class = "UnitName", @readOnly = "true" })
+                            @*<label>请选择教材目录</label>*@<a class="aS" onclick="DeleteUnit(this)">×</a>
+                            @Html.HiddenFor(m => m.UnitID, new { @class = "UnitID" })
+                            <div class="catalogD" id="catalogD">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <div class="seleBox">
+                            @Html.DropDownListFor(m => m.ResStyleID, new SelectList(ResourceStyle, "key", "value"), new { @class = "form-control", @style = " width:182px" })
+                        </div>
+                        <a class="btn btn-default allSet">批量设置</a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a class="btn btn default save" >保存</a>
+                </div>
+            </div>
+        </div>        
+@using (Html.BeginForm("Add", "ResourceUpLoad", FormMethod.Post, new { @class = "form-horizontal", id = "form1", enctype = "multipart/form-data" }))
+{
+        <form class="form-horizontal">         
+             <div class="resourceTable">
+                 <div class="tableBody">
+                       @if (Model.ResGrid.Count > 0)
+                       {
+                           string filetype = "default";
+                           string url = "";
+                           for (int i = 0; i < Model.ResGrid.Count; i++)
+                           {
+                               switch (Model.ResGrid[i].FileType)
+                               {
+                                   case 7:
+                                       filetype = "image";
+                                       url = Model.ResGrid[i].ID + ".jpg";
+                                       break;
+                                   case 11:
+                                       filetype = "flash";
+                                       url = "flash.jpg";
+                                       break;
+                                   case 9:
+                                       filetype = "mp3";
+                                       url = "mp3.jpg";
+                                       break;
+                                   case 8:
+                                       url = "video.jpg";
+                                       filetype = "video";
+                                       break;
+                                   case 4:
+                                       filetype = "ppt";
+                                       url = "ppt.jpg";
+                                       break;
+                                   case 2:
+                                       filetype = "word";
+                                       url = "word.jpg";
+                                       break;
+                                   case 3:
+                                       filetype = "excel";
+                                       url = "excel.jpg";
+                                       break;
+                                   case 1:
+                                       filetype = "txt";
+                                       url = "txt.jpg";
+                                       break;
+                                   case 10:
+                                       filetype = "fold";
+                                       url = "zip.jpg";
+                                       break;
+                                   case 5:
+                                       filetype = "pdf";
+                                       url = "pdf.jpg";
+                                       break;
+                                   case 0:
+                                       filetype = "default";
+                                       url = "miss.png";
+                                       break;
+                                   default:
+                                       break;
+
+                               }
+                                <div class="tableRow clearfix">
+                                    <div class="col-md-12">
+                                        <div class="imgDiv">
+                                            <img src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["FileServer"]+"KingsunFiles/img/"+@url)" alt="" />
+                                        </div>    
+                                        <div class="filterC">
+                                            <div class="searchC">
+                                                <div class="line">
+                                                    <div class="seleBox">
+                                                        @Html.DropDownListFor(m => m.ResGrid[i].SubjectID, new SelectList(ViewBag.Subjects, "key", "value"), new { @class = "form-control", @onchange = "SubjectChange(this," + i + ")" })
+                                                        @Html.DropDownListFor(m => m.ResGrid[i].EditionID, new SelectList(ViewBag.Editions, "key", "value"), "全部版本", new { @class = "form-control", @onchange = "EditionChange(this," + i + ")" })
+                                                        @Html.DropDownListFor(m => m.ResGrid[i].GradeID, new SelectList(ViewBag.Grades, "key", "value"), "全部年级", new { @class = "form-control", @onchange = "GradeChange(this," + i + ")" })
+                                                    </div>
+                                                    <div class="selectF">
+                                                        @Html.TextBoxFor(m => m.ResGrid[i].UnitName, new { @placeholder = "当前没有教材目录", @class = "UnitName", @readOnly = "true" })
+                                                        @*<label>请选择教材目录</label>*@<a class="aS" onclick="DeleteUnit(this,@i)">×</a>
+                                                        @Html.HiddenFor(m => m.ResGrid[i].UnitID, new { @class = "UnitID" })
+                                                        <div class="catalogD" id="catalogD-@i">
+                                      
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="filterD line">
+                                                    <div class="filterCont">
+                                                        <label>资料名称：</label>
+                                                        @Html.TextBoxFor(m => m.ResGrid[i].FileName, new { @class = "text", @autocomplete = "off" })
+                                                        @Html.HiddenFor(m => m.ResGrid[i].ID)
+                                                        @Html.HiddenFor(m => m.ResGrid[i].FileSize)
+                                                        <span><i class="@filetype"></i>大小：@((int)Model.ResGrid[i].FileSize / 1024)KB</span>
+                                                    </div>
+                                                    <div class="filterCont" id="nosubmit">
+                                                        <label>资源格式：</label>
+                                                        <ul>
+                                                            @Html.HiddenFor(m => m.ResGrid[i].ResStyleID)                                                
+                                                            @foreach (var key in ResourceStyle.Keys)
+                                                            {
+                                                                <li><a id="@key">@ResourceStyle[key]</a></li>
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                    <div class="filterCont">
+                                                        <label>资料描述：</label>
+                                                        @Html.TextAreaFor(m => m.ResGrid[i].Description, new { @class = "textBox", @autocomplete = "off" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                 </div>                   
+                         </div>
+                             }
+                         }
+               </div>
+            </div>          
+        </form>
+}
+    </div>
+
+@section Scripts{
+    <script src="@Url.Content("/Content/Js/ResourceAdd.js")"></script>
+}

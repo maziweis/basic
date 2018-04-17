@@ -1,0 +1,107 @@
+﻿@{
+    Fz.Core.VModel.SyPassport.UserInfo userInfo = System.Web.HttpContext.Current.Session["UserInfo"] as Fz.Core.VModel.SyPassport.UserInfo;
+    if (userInfo != null)
+    {
+        ViewBag.UserInfo = userInfo;
+        ViewBag.UserName = userInfo.Name;
+    }
+    List<Fz.Core.VModel.Common.Nav> navs = Fz.Core.Bll.SySystemBll.GetNavs(userInfo.SysNavs);
+    List<Fz.Core.VModel.Common.Nav> catalog = navs.Where(w => w.Type == 1).ToList();
+}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>方直科技</title>
+    <link href="@Url.Content("/Content/Tools/bootstrap/css/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("/Content/Styles/default/css/reset.css")" rel="stylesheet" />
+    <link href="@Url.Content("/Content/Styles/default/css/layout.css")" rel="stylesheet" />
+    <link href="@Url.Content("/Content/Styles/default/css/common.css")" rel="stylesheet" />
+    <link rel="Shortcut Icon" href="@Url.Content("~/favicon.ico?tempid="+(new Random()).Next())">
+    <!--[if lt IE 9]>
+        <style type="text/css">
+       .resourceTable .tableBody .tableRow img{border:1px #ddd solid;}
+        </style>
+    <![endif]-->
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="cont clearfix">
+                <a class="logoA" href="javascript:void(0)">深圳中学智慧校园平台</a>
+                <ul class="sNavUl">
+                    @*<li class="li1"><a href="@Url.Action("Index")">首页</a></li>*@
+                    <li class="li2">
+                        <a href="javascript:void(0)">系统导航</a>
+                        <div class="spanCont">
+                            @foreach (var item1 in catalog)
+                            {
+                                List<Fz.Core.VModel.Common.Nav> pages = navs.Where(w => w.PId == item1.Id).ToList();
+                                <dl>
+                                    <dt>@item1.Name</dt>
+                                    @if (pages != null && pages.Count > 0)
+                                    {
+                                        foreach (var item2 in pages)
+                                        {
+                                            string url = "";
+                                            if (item2.Id == 4 || item2.Id == 5)
+                                            {
+                                                url = string.Format("{0}&t={1}", item2.Url, userInfo.ticket);
+                                            }
+                                            else
+                                            {
+                                                url = item2.Url;
+                                            }
+                                            <dd>
+                                                @if (item2.PageOpen == 1)
+                                                {
+                                                    <a href="@url">@item2.Name</a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="@url" target="_blank">@item2.Name</a>
+                                                }
+                                            </dd>
+                                        }
+                                    }
+                                </dl>
+                            }
+                        </div>
+                    </li>
+                    <li class="li3"><a href="javascript:void(0)">@ViewBag.UserName</a></li>
+                    <li class="li4"><a href="javascript:void(0)" onclick="exit();">注销</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="cont clearfix">
+                @RenderBody()
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="statement">
+                <p>Copyright © 2016 kingsunsoft right reserved 版权所有 粤ICP备02394723497号</p>
+                <p>技术支持  深圳方直科技股份有限公司</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="@Url.Content("/Content/Tools/jquery/jquery-1.10.2.min.js")"></script>
+    <script src="@Url.Content("/Content/Tools/jquery/jquery.unobtrusive-ajax.min.js")"></script>
+    <script src="@Url.Content("/Content/Tools/jquery/jquery.placeholder.min.js")"></script>
+    <script src="@Url.Content("/Content/Tools/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("/Content/Tools/My97DatePicker/WdatePicker.js")"></script>
+    <script src="@Url.Content("/Content/Js/common.js")"></script>
+    <!--[if lt IE 9]>
+      <script src="@Url.Content("/Content/Tools/jquery/html5shiv.min.js")"></script>
+      <script src="@Url.Content("/Content/Tools/jquery/respond.min.js")"></script>
+    <![endif]-->
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

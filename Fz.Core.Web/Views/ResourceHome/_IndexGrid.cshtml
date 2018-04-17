@@ -1,0 +1,68 @@
+﻿@model List<Fz.Resource.VModel.ResourceHome.Grid>
+@{ 
+    Dictionary<string, string> TeacherSubject = Fz.Resource.Bll.ResourceHomeBll.GetTeacherSubject();
+    int i = 1;
+    bool flag = true;
+}
+    <div class="ranking">
+        <h4>资源排行</h4>
+        <table border="1" cellspacing="0" cellpadding="0">
+            <tr>
+                <th style="width:50px;">排名</th>
+                <th style="width:160px;">教师</th>
+                <th style="width:100px;">所属科组</th>
+                <th style="width:100px;">资源上传数量</th>
+            </tr>
+    @if(Model.Count > 0)
+      {
+            foreach (var resRank in Model)
+            {
+               <tr>
+                   @if (1 == i)
+                   {
+                    <td><font class="first">@i</font></td>
+                   }
+                   else if (2 == i)
+                   {
+                    <td><font class="second">@i</font></td>
+                   }
+                   else if (3 == i)
+                   {
+                    <td><font class="third">@i</font></td>
+                   }
+                   else
+                   {
+                    <td><font>@i</font></td>
+                   }                 
+                  <td title="@resRank.TeacherName">@resRank.TeacherName</td>
+                      @foreach (var key in TeacherSubject.Keys)
+                      {
+                          if (resRank.TeacherID == key)
+                          {
+                              flag = false;
+                              <td title="@TeacherSubject[key]">@TeacherSubject[key]</td>
+                           }
+
+                       }
+                     @if (flag)
+                     {
+                         <td></td>
+                     }else
+                     {
+                         flag = true;
+                     }
+                       <td>@resRank.ResourceUploadCount</td>
+                   </tr>
+                  i++;
+            }
+    }
+else
+{
+    <tr><td colspan="4"><p class="noneRec"><i></i>还没有老师上传资源哟，快去上传吧！</p></td></tr>
+}
+      
+  </table>
+ </div>
+
+
+

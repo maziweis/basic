@@ -1,0 +1,84 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTopLeft.cshtml";
+    ViewBag.Subjects = Fz.Core.Bll.DictSubjectBll.GetSelect();
+    Dictionary<int, string> dict = new Dictionary<int, string> {
+        { 1,"当前用户"},
+        { 2,"历史用户"}
+    };
+}
+
+@model Fz.Core.VModel.SyUserTeacher.Index
+
+<div class="box">
+    <ul class="nav nav-tabs" role="tablist">
+        @foreach (var key in dict.Keys)
+        {
+            if (Model.Type == key)
+            {
+                <li role="presentation" class="active"><a href="@Url.Action("Index", new { id = key })">@dict[key]</a></li>
+            }
+            else
+            {
+                <li role="presentation"><a href="@Url.Action("Index", new { id = key })">@dict[key]</a></li>
+            }
+        }
+    </ul>
+    <div class="tabs-content">
+        @using (Html.BeginForm("Index", "SyUserTeacher", FormMethod.Get, new { @class = "form-inline", id = "form1" }))
+        {
+            @Html.HiddenFor(m => m.Grid.Pager.PageIndex)
+            @Html.HiddenFor(m => m.Grid.Pager.PageSize)
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.DropDownListFor(m => m.Subject, new SelectList(ViewBag.Subjects, "key", "value"), "--主学科--", new { @class = "form-control", @onchange = "search()" })
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.Key, new { @class = "form-control", @autocomplete = "off", @placeholder = "请输入：帐号、姓名" })
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" onclick="search()">搜索</button>
+                        </span>
+                    </div>
+                    @if (Model.Type == 1)
+                    {
+                        <a class="btn btn-default" href="@Url.Action("Add")" role="button" data-toggle="modal" data-target="#myModal" data-backdrop="static">新增</a>
+                    }
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            其它操作
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            @if (Model.Type == 1)
+                            {
+                                <li><a href="@Url.Action("Import")"><i class="glyphicon glyphicon-log-in">&nbsp;</i>导入全部</a></li>
+                                <li><a href="@Url.Action("Export", new { id = Model.Type })"><i class="glyphicon glyphicon-log-out">&nbsp;</i>导出全部</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a id="btnStops" href="#"><i class="glyphicon glyphicon-ban-circle">&nbsp;</i>批量停用</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="@Url.Action("Export", new { id = Model.Type })"><i class="glyphicon glyphicon-log-out">&nbsp;</i>导出全部</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a id="btnStarts" href="#"><i class="glyphicon glyphicon-refresh">&nbsp;</i>批量恢复</a></li>
+                                <li><a id="btnDeletes" href="#"><i class="glyphicon glyphicon-trash">&nbsp;</i>批量删除</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="datas">
+            @Html.Partial("_IndexGrid", Model.Grid.Data, new ViewDataDictionary { { "type", Model.Type } })
+        </div>
+        @Html.Pager(Model.Grid.Pager)
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("/Content/Js/SyUserTeacher.js")"></script>
+}

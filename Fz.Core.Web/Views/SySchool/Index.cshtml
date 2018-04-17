@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTopLeft.cshtml";
+}
+
+@model Fz.Core.VModel.SySchool.Form
+
+<div class="schoolInfo">
+    <div class="moduleTitle">
+        <h3 class="tc">学校基本信息</h3>
+        <a class="btn btn-default" href="@Url.Action("Edit")">编辑</a>
+    </div>
+    <div class="infoTable">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="rowTitle" width="70">学校名称：</td>
+                    <td class="rowContent">@Model.Name</td>
+                </tr>
+                <tr>
+                    <td class="rowTitle">机构代码：</td>
+                    <td class="rowContent">@Model.Code</td>
+                </tr>
+                <tr>
+                    <td class="rowTitle">校长：</td>
+                    <td class="rowContent">@Model.Principal</td>
+                </tr>
+                <tr>
+                    <td class="rowTitle">校园主页：</td>
+                    <td class="rowContent breakWord">@Model.Webhome</td>
+                </tr>
+                <tr>
+                    <td class="rowTitle">学校概况：</td>
+                    <td class="rowContent">@Html.Raw(Model.Overview)</td>
+                </tr>
+                <tr>
+                    <td class="rowTitle">校园地址：</td>
+                    <td class="rowContent">@Model.Address</td>
+                </tr>
+                <tr>
+                    <td class="rowTitle">E-mail：</td>
+                    <td class="rowContent">@Model.Email</td>
+                </tr>
+                <tr>
+                    <td class="rowTitle">联系电话：</td>
+                    <td class="rowContent">@Model.Tel</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

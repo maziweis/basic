@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+}
+
+@model Fz.Core.VModel.SyGrade.Up
+
+@using (Ajax.BeginForm("SaveUp", "SyGrade", new AjaxOptions { HttpMethod = "Post", OnSuccess = "formSuccess(data)" }, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">升级</h4>
+    </div>
+    <div class="modal-body">
+        <div>@Html.ValidationMessage("NotGraduate")</div>
+        <div  class="tipWords">
+            确定执行升级操作？将对<span>@Model.GradeCount</span>个年级共计<span>@Model.ClassCount</span>个班共计<span>@Model.StudentCount</span>名学生进行升级。
+            <br />提示：“请先执行毕业后再进行升级操作。”<br /><br />
+        </div>
+        <div>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th width="50px">序号</th>
+                        <th width="100px">年级</th>
+                        <th>班级</th>
+                        <th width="80px">学生人数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.UpGrids != null && Model.UpGrids.Count > 0)
+                    {
+                        int i = 1;
+                        foreach (var item in Model.UpGrids)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.GradeName</td>
+                                <td>
+                                    @foreach (var cn in item.ClassName)
+                                    {
+                                        <span class="label label-info">@cn</span>
+                                    }
+                                </td>
+                                <td>@item.StudentCount</td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        <tr><td class="nodata" colspan="4">@Fz.Common.Const.Grid_NoData</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">确定</button>
+        <button class="btn btn-default" data-dismiss="modal">取消</button>
+    </div>
+}

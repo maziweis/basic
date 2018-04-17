@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTopLeft.cshtml";
+}
+
+@model Fz.Core.VModel.SyLogRoomOper.Index
+
+<div class="box">
+    @using (Html.BeginForm("Index", "SyLogRoomOper", FormMethod.Get, new { @class = "form-inline", id = "form1" }))
+    {
+        @Html.HiddenFor(m => m.Grid.Pager.PageIndex)
+        @Html.HiddenFor(m => m.Grid.Pager.PageSize)
+        <div class="row">
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.StartDate, new { @class = "form-control", @autocomplete = "off", @placeholder = "开始日期", @onclick = "WdatePicker()" })
+                @Html.TextBoxFor(m => m.EndDate, new { @class = "form-control", @autocomplete = "off", @placeholder = "结束日期", @onclick = "WdatePicker()" })
+                <button class="btn btn-default" type="button" onclick="search()">搜索</button>
+                <a class="btn btn-default" href="@Url.Action("Export")">导出全部</a>
+            </div>
+        </div>
+    }
+    <div class="datas">
+        @Html.Partial("_IndexGrid", Model.Grid.Data)
+    </div>
+    @Html.Pager(Model.Grid.Pager)
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("/Content/Js/SyLogRoomOper.js")"></script>
+}

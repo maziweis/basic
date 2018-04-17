@@ -1,0 +1,72 @@
+﻿@model List<Fz.Core.VModel.SySystem.Grid>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th style="width:150px;">导航名称</th>
+            <th>链接地址</th>
+            <th style="width:80px;">打开方式</th>
+            <th style="width:50px;">类型</th>
+            <th style="width:80px;">包含左侧</th>
+            <th style="width:80px;">排序值</th>
+            <th style="width:70px;">状态</th>
+            <th style="width:100px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                string _typeName = item.Type == 1 ? "平台" : "系统";
+                string _IsEnabledName = Fz.Common.Dict.IsEnabled.GetVal(item.IsEnabled);
+                string _PageOpen = Fz.Common.Dict.NavOpen.GetVal(item.PageOpen);
+                string _isNav = "";
+                if (item.Level > 1)
+                {
+                    _isNav = Fz.Common.Dict.YesNo.GetVal(item.IsNav);
+                }
+                var pleft = string.Format("padding-left:{0}px;", item.Level * 25);
+                <tr title="@item.Url">
+                    @if (item.Level > 1)
+                    {
+                        <td style="@pleft">@item.Name</td>
+                    }
+                    else
+                    {
+                        <td>@item.Name</td>
+                    }
+                    <td style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">@item.Url</td>
+                    <td>@_PageOpen</td>
+                    <td>@_typeName</td>
+                    <td>@_isNav</td>
+                    <td>@item.Sort</td>
+                    <td>
+                        @if (item.IsEnabled)
+                        {
+                            <span class="label label-success">@_IsEnabledName</span>
+                        }
+                        else
+                        {
+                            <span class="label label-danger">@_IsEnabledName</span>
+                        }
+                    </td>
+                    <td>
+                        @if (item.Type==1)
+                        {
+                            <a class="btn btn-default btn-sm" href="@Url.Action("EditCatalog", new { id = item.Id })" title="编辑" data-toggle="modal" data-target="#myModal" data-backdrop="static"><i class="glyphicon glyphicon-edit"></i></a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-default btn-sm" href="@Url.Action("Edit", new { id = item.Id })" title="编辑" data-toggle="modal" data-target="#myModal" data-backdrop="static"><i class="glyphicon glyphicon-edit"></i></a>
+                        }
+                        <button class="btn btn-default btn-sm btnDelete" type="button" title="删除" dataid="@item.Id"><i class="glyphicon glyphicon-trash"></i></button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr><td class="nodata" colspan="8">@Fz.Common.Const.Grid_NoData</td></tr>
+        }
+    </tbody>
+</table>

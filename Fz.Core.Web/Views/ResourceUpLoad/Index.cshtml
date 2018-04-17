@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTopLeft.cshtml";
+}
+<div class="rightCont">
+    <div class="resourceList1">
+        <input type="hidden" id="FileServerUrl" value="@System.Configuration.ConfigurationManager.AppSettings["FileServer"]" />
+        <div class="step1" style="display:none;">
+            <table border="1" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th>序号</th>
+                    <th>资源名称</th>
+                    <th>资源类型</th>
+                    <th>资源大小</th>
+                    <th>上传进度</th>
+                    <th>操作</th>
+                </tr>
+                <tbody id="uploadContent">              
+                </tbody>          
+            </table>
+            <button class="upLoadBtn" onclick="javascript:$('#uploadFile').uploadify('upload', '*')">开始上传</button>
+        </div>
+        <div class="step2">
+            <img class="img" src="@Url.Content("/Content/Styles/default/img/uploadImg.png")" />
+            <input type="file" value="选择上传资源" class="upLoadBtn" id="uploadFile"/>
+            @*<button class="upLoadBtn">点击选择文件</button>*@
+            <p class="tips">单次可选最多20个资源</p>
+        </div>
+    </div>
+</div>
+@section Styles{
+      <link href="@Url.Content("/Content/Tools/uploadify/uploadify.css")" rel="stylesheet" />
+    }
+@section Scripts{
+   <script src="@Url.Content("/Content/Tools/jquery/jquery.json-2.4.js")" type="text/javascript"></script>
+   <script src="@Url.Content("/Content/Tools/uploadify/swfobject.js")" type="text/javascript"></script>
+   <script src="@Url.Content("/Content//Tools/uploadify/jquery.uploadify.js")" type="text/javascript"></script>
+   <script src="@Url.Content("/Content/Js/ResourceUpload.js")" type="text/javascript"></script>
+}
+
+
+

@@ -1,0 +1,112 @@
+﻿@model List<Fz.Resource.VModel.ResourceApprove.Grid>
+<div class="tableBody">
+@if (Model.Count > 0)
+{
+    string filetype = "default";
+    string url = "default.jpg";
+    foreach (var res in Model)
+    {
+        string type = Fz.Common.Dict.FileType.GetVal(res.FileType.ToLower());
+        string PrePath = System.Configuration.ConfigurationManager.AppSettings["FileAddress"] + "/KingsunFiles/img/";
+        switch (type)
+        {
+            case "fold":
+                filetype = "fold";
+                url = "zip.jpg";
+                break;
+            case "image":
+                filetype = "image";
+                url = res.ResourceUrl + ".jpg";
+                if (!File.Exists(PrePath + url))
+                {
+                    url = "miss.png";
+                }                
+                break;
+            case "mp3":
+                filetype = "mp3";
+                url = "mp3.jpg";
+                break;
+            case "video":
+                filetype = "video";
+                url = "video.jpg";
+                break;
+            case "ppt":
+                url = "ppt.jpg";
+                filetype = "ppt";
+                break;
+            case "word":
+                filetype = "word";
+                url = "word.jpg";
+                break;
+            case "flash":
+                filetype = "flash";
+                url = "flash.jpg";
+                break;
+            case "pdf":
+                filetype = "pdf";
+                url = "pdf.jpg";
+                break;
+            case "txt":
+                filetype = "txt";
+                url = "txt.jpg";
+                break;
+            case "excel":
+                filetype = "excel";
+                url = "excel.jpg";
+                break;
+            default:
+                filetype = "default";
+                url = "miss.png";
+                break;
+
+        }
+        <div class="tableRow clearfix">            
+            <div class="col-md-9">
+                <div class="checkDiv"><a class="checkbox"><input type="checkbox" id="@res.ResourceID" /></a></div>
+                <a>
+                    <div class="imgDiv">
+                        <img src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["FileServer"] +"KingsunFiles/img/"+ @url)" alt="" />
+                       </div>
+                         <div class="resourceDet" id="@res.ResourceUrl">
+                            <h3 class="title @filetype">@res.ResourceName</h3>
+                            @if (res.Description != null && res.Description.Length > 60)
+                            {
+                                <p>@res.Description.Substring(0, 60) .....</p>
+                            }
+                            else
+                            {
+                                <p>@res.Description</p>
+                            }
+                            <span>
+                                <label>大小：@(int.Parse(res.ResourceSize) / 1024)KB</label>
+                                <label>浏览：@(res.ResourceScanNum == null ? 0 : res.ResourceScanNum) 次</label>
+                                <label>收藏：@(res.ResourceCollectNum == null ? 0 : res.ResourceCollectNum) 次</label>
+                                <label>下载：@(res.ResourceDowLoadNum == null ? 0 : res.ResourceDowLoadNum) 次</label>
+                            </span>
+                            <span>
+                                <label>上传时间：@(((DateTime)res.ResourceCreateDate).ToShortDateString().ToString())</label>
+                                @if (string.IsNullOrEmpty(res.ResourceCreaterID))
+                                {
+                                    <label>贡献者：方直</label>
+                                }
+                                else
+                                {
+                                    <label>贡献者：@res.ResourceCreaterName</label>
+                                }
+                            </span>
+                        </div>
+</a>
+            </div>
+            <div class="col-md-3">
+                <div class="relaDiv">
+                    <button class="useble" onclick="ApproveAgree('@res.ResourceID')">通过</button>
+                    <button class="refuse" onclick="ApproveDisAgree('@res.ResourceID')">驳回</button>
+                </div>
+            </div>
+        </div>
+    }
+}
+</div>
+
+
+

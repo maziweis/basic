@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTopLeft.cshtml";
+    Dictionary<int, string> sys = Fz.Core.Bll.SySystemBll.GetDictByIsNavs();
+}
+
+@model Fz.Core.VModel.SyNav.Index
+
+<div class="box">
+    <ul class="nav nav-tabs" role="tablist">
+        @foreach (var item in sys)
+        {
+            if (item.Key == Model.SId)
+            {
+                <li role="presentation" class="active"><a href="@Url.Action("Index", "SyNav", new { id = item.Key })">@item.Value</a></li>
+            }
+            else
+            {
+                <li role="presentation"><a href="@Url.Action("Index", "SyNav", new { id = item.Key })">@item.Value</a></li>
+            }
+        }
+    </ul>
+    <div class="tabs-content">
+        <div class="row">
+            <div class="col-md-12"><a class="btn btn-default" href="@Url.Action("Add", "SyNav", new { SId = Model.SId })" rol role="button" data-toggle="modal" data-target="#myModal" data-backdrop="static">新增</a></div>
+        </div>
+        <div class="datas">
+            @Html.Partial("_IndexGrid", Model.Grid)
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("/Content/Js/SyNav.js")"></script>
+}

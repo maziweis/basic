@@ -1,0 +1,69 @@
+﻿@{
+    Dictionary<int, string> SubjectDict = Fz.Core.Bll.DictSubjectBll.GetSelect();
+}
+@model List<Fz.Core.VModel.SyClass.Grid>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th width="200px">班级名称</th>
+            <th>入学年份</th>
+            <th>学生数量</th>
+            @if (SubjectDict != null)
+            {
+                foreach (var key in SubjectDict.Keys)
+                {
+                    string labelName = SubjectDict[key] + "老师";
+                    <th>@labelName</th>
+                }
+            }
+            @*<th>排序值</th>*@
+            <th>状态</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                string _IsEnabledName = Fz.Common.Dict.IsEnabled.GetVal(item.IsEnabled);
+                string className = item.GradeName + item.Name;
+                <tr>
+                    <td>@className</td>
+                    <td>@item.Year</td>
+                    <td>@item.StudentCount</td>
+                    @if (SubjectDict != null)
+                    {
+                        foreach (var key in SubjectDict.Keys)
+                        {
+                            int tId = item._GridTCS.Where(w => w.Subject == key).Select(s => s.TeacherId).FirstOrDefault();
+                            string tName = Fz.Core.Bll.SyTeacherBll.GetName(tId);
+                            <td>@tName</td>
+                        }
+                    }
+                    @*<td>@item.Sort</td>*@
+                    <td>
+                        @if (item.IsEnabled)
+                        {
+
+                            <span class="label label-success">@_IsEnabledName</span>
+                        }
+                        else
+                        {
+                            <span class="label label-danger">@_IsEnabledName</span>
+                        }
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-default btn-sm" title="编辑" data-toggle="modal" data-target="#myModal" data-backdrop="static"><i class="glyphicon glyphicon-edit"></i></a>
+                        <button class="btn btn-default btn-sm btnDelete" type="button" title="删除" dataid="@item.Id"><i class="glyphicon glyphicon-trash"></i></button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            int _colspan = 6 + SubjectDict.Count;
+            <tr><td class="nodata" colspan="@_colspan">@Fz.Common.Const.Grid_NoData</td></tr>
+        }
+    </tbody>
+</table>

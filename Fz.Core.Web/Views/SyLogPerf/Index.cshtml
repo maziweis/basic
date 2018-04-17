@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTopLeft.cshtml";
+    ViewBag.Controllers = Fz.Common.Dict.Controllers.Get();
+}
+
+@model Fz.Core.VModel.SyLogPerf.Index
+
+<div class="box">
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="@Url.Action("Index","SyLogPerf")">性能监控</a></li>
+        <li role="presentation"><a href="@Url.Action("Index", "SyLogBug")">异常监控</a></li>
+        <li role="presentation"><a href="@Url.Action("Index", "SyLogOper")">操作监控</a></li>
+    </ul>
+    <div class="tabs-content">
+        @using (Html.BeginForm("Index", "SyLogPerf", FormMethod.Get, new { @class = "form-inline", id = "form1" }))
+        {
+            @Html.HiddenFor(m => m.Grid.Pager.PageIndex)
+            @Html.HiddenFor(m => m.Grid.Pager.PageSize)
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.DropDownListFor(m => m.ControllerName, new SelectList(ViewBag.Controllers, "key", "value"), "--全部模块--", new { @class = "form-control", @onchange = "search()" })
+                    @Html.DropDownListFor(m => m.TotalTime, new SelectList(Model.TotalTimes, "key", "value"), "--全部综合时间--", new { @class = "form-control", @onchange = "search()" })
+                </div>
+            </div>
+        }
+        <div class="datas">
+            @Html.Partial("_IndexGrid", Model.Grid.Data)
+        </div>
+        @Html.Pager(Model.Grid.Pager)
+    </div>
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("/Content/Js/SyLogPerf.js")"></script>
+}

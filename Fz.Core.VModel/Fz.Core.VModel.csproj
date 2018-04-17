@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1AB7E2EC-9A14-4EC5-A9B8-BDE25010ECB5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fz.Core.VModel</RootNamespace>
+    <AssemblyName>Fz.Core.VModel</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BigData\RoomLogList.cs" />
+    <Compile Include="BigData\SyLogErrorAdd.cs" />
+    <Compile Include="BigData\SyLogErrorList.cs" />
+    <Compile Include="BigData\SyLogMonitorAdd.cs" />
+    <Compile Include="BigData\SyLogMonitorList.cs" />
+    <Compile Include="Common\Nav.cs" />
+    <Compile Include="DictSubject\Form.cs" />
+    <Compile Include="DictSubject\Grid.cs" />
+    <Compile Include="DictSubject\Index.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SyClass\Form.cs" />
+    <Compile Include="SyClass\Grid.cs" />
+    <Compile Include="SyClass\Index.cs" />
+    <Compile Include="SyGrade\FormSys.cs" />
+    <Compile Include="SyGrade\Form.cs" />
+    <Compile Include="SyGrade\Up.cs" />
+    <Compile Include="SyGrade\Grid.cs" />
+    <Compile Include="SyGrade\Index.cs" />
+    <Compile Include="SyInit\EdiSubGrid.cs" />
+    <Compile Include="SyInit\Edition.cs" />
+    <Compile Include="SyInit\InitForm.cs" />
+    <Compile Include="SyLogRoomOper\Grid.cs" />
+    <Compile Include="SyLogRoomOper\Index.cs" />
+    <Compile Include="SyLogOper\Grid.cs" />
+    <Compile Include="SyLogOper\Index.cs" />
+    <Compile Include="SyLogBug\Grid.cs" />
+    <Compile Include="SyLogBug\Index.cs" />
+    <Compile Include="SyLogPerf\Grid.cs" />
+    <Compile Include="SyLogPerf\Index.cs" />
+    <Compile Include="SyRole\UserGrid.cs" />
+    <Compile Include="SySystem\FormCatalog.cs" />
+    <Compile Include="SySystem\Form.cs" />
+    <Compile Include="SySystem\Grid.cs" />
+    <Compile Include="SySystem\Index.cs" />
+    <Compile Include="SyNav\Form.cs" />
+    <Compile Include="SyNav\Grid.cs" />
+    <Compile Include="SyNav\Index.cs" />
+    <Compile Include="SyPassport\LoginModel.cs" />
+    <Compile Include="SyPassport\UserInfo.cs" />
+    <Compile Include="SyRole\Form.cs" />
+    <Compile Include="SyRole\Grid.cs" />
+    <Compile Include="SyRole\Index.cs" />
+    <Compile Include="SyRole\PermissionGrid.cs" />
+    <Compile Include="SySchool\Form.cs" />
+    <Compile Include="SyGrade\Graduate.cs" />
+    <Compile Include="SyUserStudent\Form.cs" />
+    <Compile Include="SyUserStudent\FormImport.cs" />
+    <Compile Include="SyUserStudent\Grid.cs" />
+    <Compile Include="SyUserStudent\Index.cs" />
+    <Compile Include="SyUserTeacher\Form.cs" />
+    <Compile Include="SyUserTeacher\FormImport.cs" />
+    <Compile Include="SyUserTeacher\Grid.cs" />
+    <Compile Include="SyUserTeacher\Index.cs" />
+    <Compile Include="SyUserManager\Form.cs" />
+    <Compile Include="SyUserManager\Grid.cs" />
+    <Compile Include="SyUserManager\Index.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Fz.Common.Model\Fz.Common.Model.csproj">
+      <Project>{612d1c22-1ab0-443f-a823-1a63a9fc2d82}</Project>
+      <Name>Fz.Common.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

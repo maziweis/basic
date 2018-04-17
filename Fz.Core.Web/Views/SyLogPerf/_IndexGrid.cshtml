@@ -1,0 +1,44 @@
+﻿@model List<Fz.Core.VModel.SyLogPerf.Grid>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>模块名称</th>
+            <th>功能名称</th>
+            @*<th>Action类型</th>*@
+            <th>请求方式</th>
+            <th>执行时间</th>
+            <th>渲染时间</th>
+            <th>综合时间</th>
+            @*<th>访问IP</th>
+                <th>访问人</th>*@
+            <th>访问时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                string _t1 = item.ResponseTime.ToString() + "秒";
+                string _t2 = item.RenderTime.ToString() + "秒";
+                string _t3 = item.TotalTime.ToString() + "秒";
+                <tr>
+                    <td>@item.ControllerName</td>
+                    <td>@item.ActionName</td>
+                    @*<td>@item.ActionType</td>*@
+                    <td>@item.HttpMethod</td>
+                    <td>@_t1</td>
+                    <td>@_t2</td>
+                    <td>@_t3</td>
+                    @*<td>@item.CreateIp</td>
+                        <td>@item.CreateUserName</td>*@
+                    <td>@item.CreateTime</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr><td class="nodata" colspan="7">@Fz.Common.Const.Grid_NoData</td></tr>
+        }
+    </tbody>
+</table>

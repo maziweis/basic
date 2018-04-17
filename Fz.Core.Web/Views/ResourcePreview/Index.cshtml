@@ -1,0 +1,156 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool flag;
+    if (File.Exists((string)ViewBag.LocalUrl))
+    {
+        flag = true;
+    }
+    else
+    {
+        flag = false;
+    }
+}
+@model Fz.Resource.VModel.ResourcePreview.Form
+@if (Model != null)
+{
+    <div class="resourceTable">
+        <div class="recConLeft">
+            <div class="previewBox">
+                <div class="previewContent">
+                    <h3 class="title"><i class="@Model.FileType"></i>@Model.ResourceName</h3>
+                    <div class="previewBody">
+                        @if (Model.FileType == "image")
+                        {
+                            if (flag)
+                            {
+                                <img src="@ViewBag.Url" />
+                            }
+                            else
+                            {
+                                <div class="emptyTip">文件不存在或已被删除</div>
+                            }
+
+                        }
+                        else if (Model.FileType == "mp3")
+                        {
+                            if (flag)
+                            {
+                                <audio controls="controls" autoplay="autoplay">                                 
+                                    <source src="@ViewBag.Url" type="audio/mpeg" />
+                                    <embed src="@ViewBag.Url" allowFullScreen="true" quality="high" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+                                </audio>
+                            }
+                            else
+                            {
+                                <div class="emptyTip">文件不存在或已被删除</div>
+                            }
+                        }
+                        else if (Model.FileType == "video" && (Model.FileExtension.ToLower() == "mp4" || Model.FileExtension.ToLower() == "flv"))
+                        {
+                            ///////////// 是flv格式且是ie浏览器///////////////
+                            @*if (Model.FileExtension.ToLower() == "flv" && (Model.FileExtension.ToLower() == "flv" && (Request.UserAgent != null && (Request.UserAgent.IndexOf("msie") != -1 || (Request.UserAgent.IndexOf("rv") != -1 && Request.UserAgent.IndexOf("firefox") == -1)))))
+                            {
+                                if (flag)
+                                {
+                                    <div class="notPreview">很遗憾，ie浏览器暂不支持<span>@Model.FileExtension</span>格式预览哦，请使用谷歌浏览器预览或者直接<a class="btn btn-default" onclick="DownLoad('@Model.ResourceID')">下载</a>打开吧。</div>
+                                }
+                                else
+                                {
+                                    <div class="emptyTip">文件不存在或已被删除</div>
+                                }
+                            }
+                            else
+                            {*@
+                                if (flag)
+                                {
+                                    @*<video src="@ViewBag.Url" controls="controls" autoplay="autoplay" style="width:800px; height:600px;">
+                                        <embed src="@ViewBag.Url" allowFullScreen="true" quality="high" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" width="800" height="600"></embed>
+                                    </video>*@
+                                    <video id="really-cool-video" class="video-js vjs-default-skin  vjs-big-play-centered" controls
+                                           preload="auto" width="800" height="600" 
+                                           data-setup='{}'>
+                                        <source src="@ViewBag.Url" />
+                                        <p class="vjs-no-js">
+                                             要查看观看这个视频，请启用JavaScript，并考虑升级web浏览器
+                                            使它 <a href="http://videojs.com/html5-video-support/" target="_blank">支持html5视频播放</a>
+                                        </p>
+                                    </video>
+                                }
+                                else
+                                {
+                                    <div class="emptyTip">文件不存在或已被删除</div>
+                                }
+                         //   }
+
+                        }
+                        else if (Model.FileType == "flash")
+                        {
+                            if (flag)
+                            {
+                                <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="550" height="400" id="Untitled-1" align="middle">
+                                    <param name="allowScriptAccess" value="sameDomain" />
+                                    <param name="movie" value="@ViewBag.Url" />
+                                    <param name="quality" value="high" />
+                                    <param name="bgcolor" value="#ffffff" />
+                                    <embed src="@ViewBag.Url" quality="high" bgcolor="#ffffff" width="800" height="600"  name="mymovie" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/Go/getflashplayer" />
+                                </object>
+                            }
+                            else
+                            {
+                                <div class="emptyTip">文件不存在或已被删除</div>
+                            }
+
+                        }                     
+                        else
+                        {
+                            if (flag)
+                            {
+                                <div class="notPreview">很遗憾，<span>@Model.FileExtension</span>格式不支持预览哦，请<a class="btn btn-default" onclick="DownLoad('@Model.ResourceID')">下载</a>打开吧。</div>
+                            }
+                            else
+                            {
+                                <div class="emptyTip">文件不存在或已被删除</div>
+                            }
+
+                        }
+                    </div>
+                    <div class="previewInfo">
+                        <span class="clearfix">
+                            <label>上传时间：@Model.ResourceCreaterDate</label>
+                            @if (Model.ResourceCreaterID == null)
+                            {
+                                <label>贡献者：方直</label>
+                            }
+                            else
+                            {
+                                <label>贡献者：@Model.ResourceCreaterName</label>
+                            }
+                            @if (flag)
+                            {
+                               <a class="download" onclick="DownLoad('@Model.ResourceID')">下载</a>
+                            }
+                        </span>
+                        <p>资源描述：@Model.Decription</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="emptyTip">没有找到资源</div>
+}
+@section Styles{
+   <link href="@Url.Content("/Content/Tools/Video5/css/video-js.min.css")" rel="stylesheet" />
+}
+@section Scripts{
+       <script src="@Url.Content("/Content/Js/ResourcePreview.js")"></script>
+       <script src="@Url.Content("/Content/Tools/Video5/js/video.min.js")"></script>
+    	 <!--[if lt IE 8]>
+          <script src="@Url.Content("/Content/Tools/Video5/js/videojs-ie8.min.js")"></script>
+        <![endif]-->
+       <script>
+         videojs.options.flash.swf = "/Content/Tools/Video5/js/video-js.swf";
+      </script>
+ }

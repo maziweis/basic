@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutTopLeft.cshtml";
+    ViewBag.Subjects = Fz.Resource.Bll.ResourceUploadBll.GetSelectSubjects();
+}
+@model  Fz.Resource.VModel.ResourceHome.Form
+<div class="rightCont">
+    <div class="resourceDynamic">
+        <div class="titleC">资源动态</div>     
+         <ul class="dynamicUl">
+            @if (Model.CollectDynamic.Count > 0)
+            {
+                <li id="@Model.CollectDynamic[0].ResourceUrl">资源收藏：@Model.CollectDynamic[0].ResourceName</li>
+            }
+            @if (Model.DownDynamic.Count > 0)
+            {
+                <li id="@Model.DownDynamic[0].ResourceUrl">资源下载：@Model.DownDynamic[0].ResourceName</li>
+            }
+            @if (Model.ShareDynamic.Count > 0)
+            {
+                <li id="@Model.ShareDynamic[0].ResourceUrl">资源分享：@Model.ShareDynamic[0].ResourceName</li>
+            }   
+             @if (Model.CollectDynamic.Count == 0 && Model.DownDynamic.Count == 0 && Model.ShareDynamic.Count == 0)
+             {
+                 <li><div class="emptyTip">暂时没有动态...</div> </li>
+             } 
+        </ul>    
+        @if (Model.CollectDynamic.Count > 0 || Model.DownDynamic.Count > 0 || Model.ShareDynamic.Count > 0)
+        {
+            <a class="moreA" href="@Url.Action("Index","ResourceDynamic",new { id = Model.SubjectID})">更多<b>…</b></a>
+        }
+        else
+        {           
+            <a class="moreA"></a>
+        }
+    </div>
+    @using (Html.BeginForm("ResourceShow", "ResourceHome", FormMethod.Get, new { @class = "form-inline", id = "form1" }))
+    {
+        <div class="module">
+            <div class="searchC">
+                <div class="searchD"><label>资源全库检索</label><br /><span>
+                   @Html.DropDownListFor(m=>m.SubjectID, new SelectList(ViewBag.Subjects, "key", "value"), new { @class = "form-control", @onchange = "SubjectChange(this)" })
+                <input type="text" name="SearchKey" id="searchMsg" placeholder="请输入" /><a href="javascript:void(0)">搜索</a></span></div>
+                @*<div class="searchTips"><label>资源搜索：</label><span><b>高考模拟题</b><b>hello</b><b>语文教案</b><b>奥数竞赛课件</b><b>文言文</b></span></div>*@
+            </div>
+            <div class="detailsC">
+                <ul>
+                    <li class="li1"><p>我的资源数</p><b>@Model.MyResource</b></li>
+                    <li class="li2"><p>收藏数量</p><b>@Model.CollectResource</b></li>
+                    <li class="li3"><p>上传的数量</p><b>@Model.UplaodResource</b></li>
+                </ul>
+            </div>
+        </div>
+    }
+    <div class="module">
+        @Html.Partial("_IndexGrid", Model.ResGrid)
+        <div class="graph" >
+            <div id="mainChart">
+                分解饼状图
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="@Url.Content("/Content/Tools/ECharts/echarts.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/Content/Js/ResourceHome.js")" type="text/javascript"></script>
+}
+
+@section Styles{
+    <style type="text/css">
+    </style>
+}

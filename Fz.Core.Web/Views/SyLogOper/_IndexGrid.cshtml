@@ -1,0 +1,24 @@
+﻿@model List<Fz.Core.VModel.SyLogOper.Grid>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>日志内容</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                string content = string.Format("【{0}】，【{1}】，【{2}】，【访问IP为：{3}】", Fz.Common.Function.ConvertDateTime(item.CreateTime), item.CreateAccount, item.ActionPurpose, item.CreateIp);
+                <tr>
+                    <td>@content</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr><td class="nodata">@Fz.Common.Const.Grid_NoData</td></tr>
+        }
+    </tbody>
+</table>

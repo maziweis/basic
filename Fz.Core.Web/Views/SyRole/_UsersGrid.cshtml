@@ -1,0 +1,44 @@
+﻿@model Fz.Core.VModel.SyRole.RUser
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th style="width:80px">序号</th>
+            <th style="width:150px">用户名</th>
+            <th style="width:150px">姓名</th>
+            <th>角色</th>
+            <th style="width:150px">授权时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Grid != null && Model.Grid.Data.Count() > 0)
+        {
+            int i = 1;
+            foreach (var item in Model.Grid.Data)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@item.Account</td>
+                    <td>@item.Name</td>
+                    <td>
+                        @if (item.RoleNames != null)
+                        {
+                            foreach (string name in item.RoleNames)
+                            {
+                                <span class="label label-info">@name</span>
+                            }
+                        }
+                    </td>
+                    <td>@item.Time.ToString("yyyy-MM-dd")</td>
+                </tr>
+                i++;
+            }
+        }
+        else
+        {
+            <tr><td class="nodata" colspan="5">@Fz.Common.Const.Grid_NoData</td></tr>
+        }
+    </tbody>
+</table>
+
+@Html.Pager(Model.Grid.Pager)
